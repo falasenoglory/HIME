@@ -12,7 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_splash_screen"
     tools:context="com.jimbofer.hime.SplashScreenActivity"
-    android:background="@drawable/background3">
+    android:background="@drawable/background2">
 
     <ImageView
         android:layout_width="wrap_content"

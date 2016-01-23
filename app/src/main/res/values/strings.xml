@@ -11,4 +11,6 @@
     <string name="string_history">Medical History</string>
     <string name="string_insurance">Insurance About</string>
     <string name="string_hospital">Hospital</string>
+    <string name="title_activity_splash_screen">HIME</string>
 </resources>
+
