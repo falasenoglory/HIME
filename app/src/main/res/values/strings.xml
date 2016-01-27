@@ -12,5 +12,9 @@
     <string name="string_insurance">Insurance About</string>
     <string name="string_hospital">Hospital</string>
     <string name="title_activity_splash_screen">HIME</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="AccountId">Account ID</string>
+    <string name="EnterPassword">Enter Password</string>
+    <string name="Login">Login</string>
 </resources>
 
