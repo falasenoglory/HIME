@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jimbofer.hime">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo2"
@@ -15,10 +17,11 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="CbKfkP6JoRu5UvoXUeQMWkdqA6GKSPpWm38KmSsd" />
+
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:label="@string/title_activity_splash_screen"
@@ -32,7 +35,20 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MedicalHistoryListActivity"
+            android:label="@string/title_medicalhistory_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".MedicalHistoryDetailActivity"
+            android:label="@string/title_medicalhistory_detail"
+            android:parentActivityName=".MedicalHistoryListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jimbofer.hime.MedicalHistoryListActivity" />
+        </activity>
     </application>
 
 </manifest>
