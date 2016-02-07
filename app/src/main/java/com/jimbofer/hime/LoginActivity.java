@@ -60,22 +60,22 @@ public class LoginActivity extends AppCompatActivity {
                         if (user!=null){
                             role=user.getString("Role");
                             if(role.equals("Doctor")) {
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
+                                Intent intent = new Intent(LoginActivity.this, Doctor_Profile.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
                             if(role.equals("Patient")) {
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
+                                Intent intent = new Intent(LoginActivity.this, Patient_Profile.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
                             if(role.equals("HospitalAdmin")) {
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
+                                Intent intent = new Intent(LoginActivity.this, HospitalAdmin_Profile.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
                             if(role.equals("Insurance")) {
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
+                                Intent intent = new Intent(LoginActivity.this, Insurance_Profile.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
