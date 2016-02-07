@@ -16,5 +16,7 @@
     <string name="AccountId">Account ID</string>
     <string name="EnterPassword">Enter Password</string>
     <string name="Login">Login</string>
+    <string name="title_medicalhistory_list">Medical Histories</string>
+    <string name="title_medicalhistory_detail">Medical History Detail</string>
 </resources>
 
