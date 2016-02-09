@@ -1,5 +1,7 @@
 package com.jimbofer.hime;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -77,21 +79,27 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Fragment fragment= null;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_history) {
 
         } else if (id == R.id.nav_transaction) {
-
+            fragment = new TransactionFragment();
         } else if (id == R.id.nav_hospital) {
 
         } else if (id == R.id.nav_insurance) {
 
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

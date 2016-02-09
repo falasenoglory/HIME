@@ -18,5 +18,9 @@
     <string name="Login">Login</string>
     <string name="title_medicalhistory_list">Medical Histories</string>
     <string name="title_medicalhistory_detail">Medical History Detail</string>
+    <string name="hospital_name">Hospital Name</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="temp_day">23</string>
+    <string name="temp_month">Feb</string>
 </resources>
 
