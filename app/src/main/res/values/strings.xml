@@ -22,5 +22,6 @@
     <string name="doctor_name">Doctor Name</string>
     <string name="temp_day">23</string>
     <string name="temp_month">Feb</string>
+    <string name="patients_name">Patient\'s Name</string>
 </resources>
 
