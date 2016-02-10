@@ -3,13 +3,13 @@
     xmlns:card="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
-    android:minHeight="?android:attr/listPreferredItemHeight"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="4dp"
+    android:minHeight="?android:attr/listPreferredItemHeight"
     card:cardCornerRadius="4dp">
 
     <LinearLayout
@@ -30,19 +30,19 @@
                 android:id="@+id/day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:gravity="center"
-                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 tools:text="@string/temp_day" />
 
             <TextView
                 android:id="@+id/month"
-                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 tools:text="@string/temp_month" />
         </LinearLayout>
