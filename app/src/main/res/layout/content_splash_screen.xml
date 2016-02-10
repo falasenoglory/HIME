@@ -12,13 +12,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_splash_screen"
     tools:context="com.jimbofer.hime.SplashScreenActivity"
-    android:background="@drawable/background2">
+    android:background="@drawable/backgroundblue2">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
+        android:background="@drawable/logowhitesmall"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/logo_small" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

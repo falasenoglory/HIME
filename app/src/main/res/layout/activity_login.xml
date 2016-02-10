@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.jimbofer.hime.LoginActivity"
-    android:background="@color/colorLightPrimaryDark">
+    android:background="@drawable/backgrounddark">
 
     <!-- Login progress -->
     <ProgressBar
@@ -26,9 +26,11 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:src="@drawable/logo" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logowhitesmall"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="50dp" />
 
     </LinearLayout>
     <ScrollView
@@ -46,48 +48,58 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/AccountID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/AccountId"
-                    android:gravity="center"
-                    android:imeActionId="@+id/login"
-                    android:imeActionLabel="Sign in"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/EnterPassword"
-                    android:gravity="center"
-                    android:imeActionId="@+id/login"
-                    android:imeActionLabel="Sign in"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
             </android.support.design.widget.TextInputLayout>
+
+            <EditText
+                android:layout_width="274dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/AccountID"
+                android:hint="Account ID"
+                android:textSize="15sp"
+                android:typeface="sans"
+                android:background="@drawable/edtstyle"
+                android:textColorHint="@color/colorHint"
+                android:padding="10dp"
+                android:paddingLeft="15dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_marginTop="10dp"
+                android:typeface="sans"
+                android:layout_width="274dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/EnterPassword"
+                android:textColorHint="@color/colorHint"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="Sign in"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:background="@drawable/edtstyle"
+                android:padding="10dp"
+                android:paddingLeft="15dp"
+                android:layout_gravity="center_horizontal" />
 
             <Button
                 android:id="@+id/login"
-
-                android:layout_width="match_parent"
+                android:background="@drawable/edtstyle"
+                android:layout_width="269dp"
                 android:textColor="@color/colorAccent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/Login"/>
+                android:layout_marginTop="20dp"
+                android:text="@string/Login"
+                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
     </ScrollView>

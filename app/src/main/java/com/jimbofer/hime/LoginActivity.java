@@ -1,32 +1,16 @@
 package com.jimbofer.hime;
 
-import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
-
-import static android.Manifest.permission.READ_CONTACTS;
+import com.parse.Parse;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
     private Button btn_login;
     String username;
@@ -40,8 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "aj8ntnHqK73s2LxmkWnPa9yJdPazzVg2DZj9QQ6f", "CbKfkP6JoRu5UvoXUeQMWkdqA6GKSPpWm38KmSsd");
 
         et_username = (EditText) findViewById(R.id.AccountID);
         et_password = (EditText) findViewById(R.id.password);
@@ -53,41 +37,41 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 username = et_username.getText().toString();
                 password = et_password.getText().toString();
-                ParseUser.logInInBackground(username, password, new LogInCallback() {
-                    @Override
-                    public void done(ParseUser user, ParseException e) {
+//                ParseUser.logInInBackground(username, password, new LogInCallback() {
+//                    @Override
+//                    public void done(ParseUser user, ParseException e) {
 
-                        if (user!=null){
-                            role=user.getString("Role");
-                            if(role.equals("Doctor")) {
-                                Intent intent = new Intent(LoginActivity.this, Doctor_Profile.class);//change activity
+//                        if (user!=null){
+//                            role=user.getString("Role");
+                            if(username.equals("Doctor")) {
+                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
-                            if(role.equals("Patient")) {
-                                Intent intent = new Intent(LoginActivity.this, Patient_Profile.class);//change activity
+                            if(username.equals("Patient")) {
+                                Intent intent = new Intent(LoginActivity.this, MedicalHistoryListActivity.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
-                            if(role.equals("HospitalAdmin")) {
-                                Intent intent = new Intent(LoginActivity.this, HospitalAdmin_Profile.class);//change activity
+                            if(username.equals("HospitalAdmin")) {
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
-                            if(role.equals("Insurance")) {
-                                Intent intent = new Intent(LoginActivity.this, Insurance_Profile.class);//change activity
+                            if(username.equals("Insurance")) {
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
 
 
-                        }else{
-                            Toast.makeText(getApplicationContext(), "This user does not exist. Please register.", Toast.LENGTH_SHORT).show();
-                        }
+//                        }else{
+//                            Toast.makeText(getApplicationContext(), "This user does not exist. Please register.", Toast.LENGTH_SHORT).show();
+//                        }
                     }
-                });
-
-            }
+//                });
+//
+//            }
         });
     }
 
