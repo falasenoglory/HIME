@@ -23,5 +23,8 @@
     <string name="temp_day">23</string>
     <string name="temp_month">Feb</string>
     <string name="patients_name">Patient\'s Name</string>
+    <string name="name">Name:</string>
+    <string name="address">Address:</string>
+    <string name="birthday">Birthday:</string>
 </resources>
 
