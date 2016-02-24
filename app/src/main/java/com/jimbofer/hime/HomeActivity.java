@@ -18,6 +18,8 @@ import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private String username;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +30,21 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Intent intent = getIntent();
-        int role = intent.getIntExtra("role", 0);
+        role = intent.getStringExtra(Constants.ROLE_KEY);
+        username = intent.getStringExtra("username");
 
-        if (role == 1) {
+        if (role.equals(Constants.ROLE_PATIENT)) {
+            Fragment fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.ROLE_KEY, role);
+
+            fragment.setArguments(bundle);
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, new ProfileFragment()).commit();
+                    .replace(R.id.fragmentContainer, fragment).commit();
         }
+
+
 
     }
 
@@ -79,6 +89,10 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.ROLE_KEY, role);
+            bundle.putString(Constants.USERNAME_KEY, username);
+            fragment.setArguments(bundle);
         } else if (id == R.id.nav_account) {
             fragment = new ProfileFragment();
         } else if (id == R.id.nav_history) {

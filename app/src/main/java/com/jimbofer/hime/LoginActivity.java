@@ -55,9 +55,10 @@ public class LoginActivity extends Activity {
 //                                startActivity(intent);
 //                                finish();
 //                            }
-                            if (username.equals("Patient")) {
+                            if (role.equals(Constants.ROLE_PATIENT)) {
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
-                                intent.putExtra("role", 1);
+                                intent.putExtra("username",username);
+                                intent.putExtra("role", role);
                                 startActivity(intent);
                                 finish();
                             }
