@@ -4,15 +4,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -31,21 +26,18 @@ public class HomeActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         role = intent.getStringExtra(Constants.ROLE_KEY);
-        username = intent.getStringExtra("username");
+        username = intent.getStringExtra(Constants.USERNAME_KEY);
 
         if (role.equals(Constants.ROLE_PATIENT)) {
             Fragment fragment = new ProfileFragment();
             Bundle bundle = new Bundle();
             bundle.putString(Constants.ROLE_KEY, role);
-
+            bundle.putString(Constants.USERNAME_KEY, username);
             fragment.setArguments(bundle);
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, fragment).commit();
         }
-
-
-
     }
 
     @Override
@@ -95,14 +87,18 @@ public class HomeActivity extends AppCompatActivity
             fragment.setArguments(bundle);
         } else if (id == R.id.nav_account) {
             fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.ROLE_KEY, role);
+            bundle.putString(Constants.USERNAME_KEY, username);
+            fragment.setArguments(bundle);
         } else if (id == R.id.nav_history) {
-
+            //do something..
         } else if (id == R.id.nav_transaction) {
             fragment = new TransactionFragment();
         } else if (id == R.id.nav_hospital) {
-
+            //do something
         } else if (id == R.id.nav_insurance) {
-
+            //do something..
         }
 
         if (fragment != null) {
