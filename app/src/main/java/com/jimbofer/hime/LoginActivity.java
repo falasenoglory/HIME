@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.Parse;
 
@@ -48,20 +49,24 @@ public class LoginActivity extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-                            if(username.equals("Patient")) {
-                                Intent intent = new Intent(LoginActivity.this, MedicalHistoryListActivity.class);//change activity
+                            else if(username.equals("Patient")) {
+                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
-                            if(username.equals("HospitalAdmin")) {
+                            else if(username.equals("HospitalAdmin")) {
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
-                            if(username.equals("Insurance")) {
+                            else if(username.equals("Insurance")) {
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
                                 startActivity(intent);
                                 finish();
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), "This user does not exist. Please register.", Toast.LENGTH_SHORT).show();
                             }
 
 
