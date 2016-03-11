@@ -64,6 +64,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="4dp"
+            android:minHeight="?android:attr/listPreferredItemHeight"
             android:orientation="horizontal"
             card:cardCornerRadius="4dp">
 
@@ -74,6 +75,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="4dp"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -103,6 +105,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="4dp"
+            android:minHeight="?android:attr/listPreferredItemHeight"
             android:orientation="horizontal"
             card:cardCornerRadius="4dp">
 
@@ -113,6 +116,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="4dp"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -145,6 +149,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="4dp"
+        android:minHeight="?android:attr/listPreferredItemHeight"
         android:orientation="horizontal"
         card:cardCornerRadius="4dp">
 
@@ -154,6 +159,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:orientation="vertical">
 
@@ -185,6 +191,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="4dp"
+        android:minHeight="?android:attr/listPreferredItemHeight"
         android:orientation="horizontal"
         card:cardCornerRadius="4dp">
 
@@ -193,6 +200,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
             android:layout_marginRight="8dp"
             android:layout_marginTop="4dp"
             android:orientation="vertical">

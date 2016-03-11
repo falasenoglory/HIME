@@ -2,46 +2,42 @@ package com.jimbofer.hime;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private String username;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intent = getIntent();
+        role = intent.getStringExtra(Constants.ROLE_KEY);
+        username = intent.getStringExtra(Constants.USERNAME_KEY);
+
+        if (role.equals(Constants.ROLE_PATIENT)) {
+            Fragment fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.ROLE_KEY, role);
+            bundle.putString(Constants.USERNAME_KEY, username);
+            fragment.setArguments(bundle);
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment).commit();
+        }
     }
 
     @Override
@@ -79,27 +75,36 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Fragment fragment= null;
+        Fragment fragment = null;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.ROLE_KEY, role);
+            bundle.putString(Constants.USERNAME_KEY, username);
+            fragment.setArguments(bundle);
         } else if (id == R.id.nav_account) {
-
+            fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.ROLE_KEY, role);
+            bundle.putString(Constants.USERNAME_KEY, username);
+            fragment.setArguments(bundle);
         } else if (id == R.id.nav_history) {
-
+            //do something..
         } else if (id == R.id.nav_transaction) {
             fragment = new TransactionFragment();
         } else if (id == R.id.nav_hospital) {
-
+            //do something
         } else if (id == R.id.nav_insurance) {
-
+            //do something..
         }
 
         if (fragment != null) {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, fragment).commit();
+                    .replace(R.id.fragmentContainer, fragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
