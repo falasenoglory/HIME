@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jimbofer.hime.fragments.ProfileFragment;
+import com.jimbofer.hime.fragments.TransactionFragment;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private String username;
@@ -27,7 +30,7 @@ public class HomeActivity extends AppCompatActivity
         Intent intent = getIntent();
         role = intent.getStringExtra(Constants.ROLE_KEY);
         username = intent.getStringExtra(Constants.USERNAME_KEY);
-
+        //this should show
         if (role.equals(Constants.ROLE_PATIENT)) {
             Fragment fragment = new ProfileFragment();
             Bundle bundle = new Bundle();

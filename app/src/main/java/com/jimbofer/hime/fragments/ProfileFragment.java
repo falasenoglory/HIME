@@ -1,4 +1,4 @@
-package com.jimbofer.hime;
+package com.jimbofer.hime.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jimbofer.hime.Constants;
+import com.jimbofer.hime.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;

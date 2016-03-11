@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 
 public class LoginActivity extends Activity {
@@ -38,49 +41,42 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 username = et_username.getText().toString();
                 password = et_password.getText().toString();
-//                ParseUser.logInInBackground(username, password, new LogInCallback() {
-//                    @Override
-//                    public void done(ParseUser user, ParseException e) {
+                ParseUser.logInInBackground(username, password, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
 
-//                        if (user!=null){
-//                            role=user.getString("Role");
-                            if(username.equals("Doctor")) {
-                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);//change activity
-                                startActivity(intent);
-                                finish();
-                            }
-                            else if(username.equals("Patient")) {
-                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);//change activity
-                                startActivity(intent);
-                                finish();
-                            }
-                            else if(username.equals("HospitalAdmin")) {
+                        if (user != null && e == null) {
+                            String role = user.getString("Role");
+                            Toast.makeText(getApplicationContext(), role, Toast.LENGTH_SHORT).show();
+                            if (role.equals(Constants.ROLE_PATIENT)) {
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
+                                intent.putExtra("username",username);
+                                intent.putExtra("role", role);
                                 startActivity(intent);
                                 finish();
                             }
-                            else if(username.equals("Insurance")) {
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
-                                startActivity(intent);
-                                finish();
-                            }
-                            else
-                            {
-                                Toast.makeText(getApplicationContext(), "This user does not exist. Please register.", Toast.LENGTH_SHORT).show();
-                            }
+//                            if (username.equals("HospitalAdmin")) {
+//                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
+//                                startActivity(intent);
+//                                finish();
+//                            }
+//                            if (username.equals("Insurance")) {
+//                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
+//                                startActivity(intent);
+//                                finish();
+//                            }
+                        } else if (user == null) {
+                            Toast.makeText(getApplicationContext(), "Error in log-in. Username and Password did not match.", Toast.LENGTH_SHORT).show();
+                        }
 
 
 //                        }else{
 //                            Toast.makeText(getApplicationContext(), "This user does not exist. Please register.", Toast.LENGTH_SHORT).show();
 //                        }
                     }
-//                });
-//
-//            }
+                });
+
+            }
         });
     }
-
-
-
-
 }

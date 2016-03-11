@@ -19,10 +19,6 @@
             android:value="CbKfkP6JoRu5UvoXUeQMWkdqA6GKSPpWm38KmSsd" />
 
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".SplashScreenActivity"
             android:label="@string/title_activity_splash_screen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -32,23 +28,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MedicalHistoryListActivity"
-            android:label="@string/title_medicalhistory_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".MedicalHistoryDetailActivity"
-            android:label="@string/title_medicalhistory_detail"
-            android:parentActivityName=".MedicalHistoryListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.jimbofer.hime.MedicalHistoryListActivity" />
-        </activity>
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+
+        <activity android:name=".InsuranceAdminProfile"></activity>
     </application>
 
 </manifest>
