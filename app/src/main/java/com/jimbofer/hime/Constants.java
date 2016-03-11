@@ -4,10 +4,10 @@ package com.jimbofer.hime;
  * Created by Christian on 2/25/2016.
  */
 public class Constants {
-    public static final String ROLE_PATIENT = "Patient";
-    public static final String ROLE_DOCTOR = "Doctor";
-    public static final String ROLE_INSURANCE = "Insurance";
-    public static final String ROLE_HospitalAdmin = "HospitalAdmin";
+    public static final String ROLE_PATIENT = "Parse_Patient";
+    public static final String ROLE_DOCTOR = "Parse_Doctor";
+    public static final String ROLE_INSURANCE = "Parse_Insurance";
+    public static final String ROLE_HospitalAdmin = "Parse_HospitalAdmin";
 
     public static final String ROLE_KEY = "role";
     public static final String USERNAME_KEY = "username";
