@@ -111,7 +111,7 @@ public class Parse_Patient {
         });
 
     }
-    public void deletePatientString objID){
+    public void deletePatient (String objID){
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Patient");
         query2.whereEqualTo("objectId", objID);
         query2.findInBackground(new FindCallback<ParseObject>() {
@@ -137,6 +137,10 @@ public class Parse_Patient {
                 }
             }
         });
+    }
+    public void editPatient(String objID,String insuranceID,String fname,String lname,String address,String bday,String medhis,String gender,String insbal,String cno){
+        deletePatient(objID);
+        addPatient(insuranceID, fname, lname, address, bday, medhis, gender, insbal, cno);
     }
 
 

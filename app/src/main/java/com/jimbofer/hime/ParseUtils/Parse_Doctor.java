@@ -138,5 +138,9 @@ public class Parse_Doctor {
             }
         });
     }
+    public void editDoctor(String objID,String hospID,String insID,String fname,String lname,String specialization,String contactNo,String gender,String transPrice){
+        deleteDoctor(objID);
+        addDoctor(hospID, insID, fname, lname, specialization, contactNo, gender, transPrice);
+    }
 }
 

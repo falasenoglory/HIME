@@ -132,4 +132,8 @@ public class Parse_HospitalAdmin {
             }
         });
     }
+    public void editHospital(String objID, String hospname, String hospadd, String hospHMOConNo, String lat,String lang){
+        deleteHospital(objID);
+        addHospital(hospname, hospadd, hospHMOConNo, lat, lang);
+    }
 }

@@ -128,5 +128,9 @@ public class Parse_MedicalHistory {
             }
         });
     }
+    public void editMedicalHistory(String objID,String PatientID,String datediag,String medhis){
+        deleteMedicalHistory(objID);
+        addMedicalHistory(PatientID,datediag,medhis);
+    }
 
 }
