@@ -32,16 +32,18 @@ public class HomeActivity extends AppCompatActivity
         role = intent.getStringExtra(Constants.ROLE_KEY);
         username = intent.getStringExtra(Constants.USERNAME_KEY);
         //this should show
-        if (role.equals(Constants.ROLE_PATIENT)) {
-            Fragment fragment = new ProfileFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(Constants.ROLE_KEY, role);
-            bundle.putString(Constants.USERNAME_KEY, username);
-            fragment.setArguments(bundle);
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, fragment).commit();
-        }
+        navigationView.setCheckedItem(R.id.nav_account);
+//        if (role.equals(Constants.ROLE_PATIENT)) {
+//            navigationView.setCheckedItem(R.id.nav_account);
+//            Fragment fragment = new ProfileFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString(Constants.ROLE_KEY, role);
+//            bundle.putString(Constants.USERNAME_KEY, username);
+//            fragment.setArguments(bundle);
+//            FragmentManager fragmentManager = getFragmentManager();
+//            fragmentManager.beginTransaction()
+//                    .replace(R.id.fragmentContainer, fragment).commit();
+//        }
     }
 
     @Override
