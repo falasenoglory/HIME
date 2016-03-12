@@ -9,6 +9,7 @@ public class Patient {
     private String patientID;
     private String firstName;
     private String lastName;
+    private String middleInitial;
     private String address;
     private String birthday;
     private String medicalHistory;
@@ -16,12 +17,13 @@ public class Patient {
     private String patientRemainingInsuranceBalance;
     private String contactNo;
 
-    public Patient(String objectID, String insuranceID, String patientID, String firstName, String lastName, String address, String birthday, String medicalHistory, String gender, String patientRemainingInsuranceBalance, String contactNo) {
+    public Patient(String objectID, String insuranceID, String patientID, String firstName, String lastName, String middleInitial, String address, String birthday, String medicalHistory, String gender, String patientRemainingInsuranceBalance, String contactNo) {
         ObjectID = objectID;
         this.insuranceID = insuranceID;
         this.patientID = patientID;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.middleInitial = middleInitial;
         this.address = address;
         this.birthday = birthday;
         this.medicalHistory = medicalHistory;
@@ -32,6 +34,14 @@ public class Patient {
 
     public String getObjectID() {
         return ObjectID;
+    }
+
+    public String getMiddleInitial() {
+        return middleInitial;
+    }
+
+    public void setMiddleInitial(String middleInitial) {
+        this.middleInitial = middleInitial;
     }
 
     public void setObjectID(String objectID) {

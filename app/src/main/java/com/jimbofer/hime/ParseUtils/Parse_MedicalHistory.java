@@ -65,7 +65,7 @@ public class Parse_MedicalHistory {
     }
     public static int ListSize(){
         final ArrayList<MedicalHistory> List= new ArrayList<>();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("MedicalHistory");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
