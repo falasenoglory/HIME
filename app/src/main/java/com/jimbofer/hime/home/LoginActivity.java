@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jimbofer.hime.DoctorActivity;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.constants.Constants;
 import com.parse.LogInCallback;
