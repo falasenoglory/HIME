@@ -1,4 +1,4 @@
-package com.jimbofer.hime.home;
+package com.jimbofer.hime.main_activities;
 
 import android.app.Activity;
 import android.content.Intent;

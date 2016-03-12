@@ -36,7 +36,7 @@ public class ListViewFragment extends Fragment implements AdapterView.OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_listview, container, false);
+        return inflater.inflate(R.layout.fragment_listviewInsuranceAdmin, container, false);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ListViewFragment extends Fragment implements AdapterView.OnItemClic
 
         // create a new instance of adapter
         ItemAdapter adapter = new ItemAdapter(getActivity(),
-                R.layout.list_item, mController.getItem());
+                R.layout.item_list, mController.getItem());
 
         // set the adapter
         mListView.setAdapter(adapter);
