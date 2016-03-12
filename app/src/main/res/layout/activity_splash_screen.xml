@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    tools:context="com.jimbofer.hime.SplashScreenActivity">
+    tools:context=".main_activities.SplashScreenActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"

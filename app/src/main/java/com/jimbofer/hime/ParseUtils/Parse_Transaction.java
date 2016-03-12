@@ -1,9 +1,7 @@
 package com.jimbofer.hime.ParseUtils;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.jimbofer.hime.Constants;
 import com.jimbofer.hime.model.Transaction;
 import com.parse.FindCallback;
 import com.parse.ParseException;

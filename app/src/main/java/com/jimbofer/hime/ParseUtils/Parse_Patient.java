@@ -2,7 +2,6 @@ package com.jimbofer.hime.ParseUtils;
 
 import android.util.Log;
 
-import com.jimbofer.hime.Constants;
 import com.jimbofer.hime.model.Patient;
 import com.parse.FindCallback;
 import com.parse.ParseException;
