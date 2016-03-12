@@ -1,4 +1,4 @@
-package com.jimbofer.hime;
+package com.jimbofer.hime.home;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jimbofer.hime.R;
+import com.jimbofer.hime.constants.Constants;
 import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;

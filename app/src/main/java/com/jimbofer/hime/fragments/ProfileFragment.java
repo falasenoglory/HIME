@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jimbofer.hime.Constants;
+import com.jimbofer.hime.constants.Constants;
 import com.jimbofer.hime.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
