@@ -1,5 +1,6 @@
 package com.jimbofer.hime.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jimbofer.hime.R;
+import com.jimbofer.hime.activities.ViewPatients;
 import com.jimbofer.hime.adapters.ItemAdapter;
 import com.jimbofer.hime.controllers.InsuranceAdminControllers;
 
@@ -66,8 +68,10 @@ public class ListViewFragmentInsuranceAdmin extends Fragment implements AdapterV
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Intent intent = new Intent(getActivity(), MovieDetailsActivity.class);
-//        intent.putExtra(Constants.EXTRA_POSITION, position);
-//        startActivity(intent);
+        if(position==1) {
+            Intent intent = new Intent(getActivity(), ViewPatients.class);
+            intent.putExtra("Position", position);
+            startActivity(intent);
+        }
     }
 }
