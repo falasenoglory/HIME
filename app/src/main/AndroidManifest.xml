@@ -21,18 +21,17 @@
         <activity
             android:name=".activities.SplashScreenActivity"
             android:label="@string/title_activity_splash_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" >
-
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
+        </activity>
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_login"
@@ -40,16 +39,16 @@
         <activity
             android:name=".activities.InsuranceAdminProfile"
             android:label="@string/title_activity_insurance_admin_profile"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.ProfileActivity"
             android:label="@string/title_activity_insurance_admin_profile"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".activities.ViewPatients"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.ViewPatients" />
+        <activity
+            android:name=".activities.DoctorProfile"
+            android:label="@string/title_activity_doctor_profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

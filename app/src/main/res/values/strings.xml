@@ -30,5 +30,6 @@
     <string name="title_activity_insurance_admin_profile">Insurance Admin</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_doctor_profile">DoctorProfile</string>
 </resources>
 

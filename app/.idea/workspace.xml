@@ -6,15 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac6327bc-9f0c-400c-af85-01b03b834c23" name="Default" comment="Remodeled ParseUtils">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/fragments/HospitalFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_shape_imageview_0_9_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseDoctor.java" afterPath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseDoctor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseHospitalAdmin.java" afterPath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseHospitalAdmin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseInsurance.java" afterPath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseInsurance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseMedicalHistory.java" afterPath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseMedicalHistory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParsePatient.java" afterPath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParsePatient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseTransaction.java" afterPath="$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseTransaction.java" />
+    <list default="true" id="ac6327bc-9f0c-400c-af85-01b03b834c23" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="app.iws" />
@@ -61,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParseMedicalHistory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParseMedicalHistory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseMedicalHistory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.7030412">
-              <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
               <folding>
                 <element signature="e#761#774#0" expanded="true" />
                 <element signature="e#1451#1464#0" expanded="true" />
@@ -74,6 +66,28 @@
                 <element signature="e#3231#3232#0" expanded="true" />
                 <element signature="e#3454#3965#0" expanded="true" />
                 <element signature="e#3964#3965#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="items.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/model/items.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Transaction.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/model/Transaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.04644809">
+              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+              <folding>
+                <element signature="e#1186#1187#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,16 +150,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/activities/ProfileActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/activities/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -161,16 +165,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListViewFragmentInsuranceAdmin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/fragments/ListViewFragmentInsuranceAdmin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -2295,12 +2289,18 @@
       <option name="project" value="LOCAL" />
       <updated>1457805059557</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Remodeled ParseUtils">
+      <created>1457851474271</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1457851474271</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2311,7 +2311,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2484,46 +2484,6 @@
             <element signature="e#1042#1043#0" expanded="false" />
             <element signature="e#1092#1093#0" expanded="false" />
             <element signature="e#1129#1130#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/model/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding>
-            <element signature="e#1186#1187#0" expanded="false" />
-            <element signature="e#1234#1235#0" expanded="false" />
-            <element signature="e#1269#1270#0" expanded="false" />
-            <element signature="e#1309#1310#0" expanded="false" />
-            <element signature="e#1345#1346#0" expanded="false" />
-            <element signature="e#1403#1404#0" expanded="false" />
-            <element signature="e#1453#1454#0" expanded="false" />
-            <element signature="e#1489#1490#0" expanded="false" />
-            <element signature="e#1521#1522#0" expanded="false" />
-            <element signature="e#1571#1572#0" expanded="false" />
-            <element signature="e#1613#1614#0" expanded="false" />
-            <element signature="e#1651#1652#0" expanded="false" />
-            <element signature="e#1685#1686#0" expanded="false" />
-            <element signature="e#1739#1740#0" expanded="false" />
-            <element signature="e#1785#1786#0" expanded="false" />
-            <element signature="e#1822#1823#0" expanded="false" />
-            <element signature="e#1855#1856#0" expanded="false" />
-            <element signature="e#1907#1908#0" expanded="false" />
-            <element signature="e#1951#1952#0" expanded="false" />
-            <element signature="e#1986#1987#0" expanded="false" />
-            <element signature="e#2017#2018#0" expanded="false" />
-            <element signature="e#2065#2066#0" expanded="false" />
-            <element signature="e#2105#2106#0" expanded="false" />
-            <element signature="e#2147#2148#0" expanded="false" />
-            <element signature="e#2185#2186#0" expanded="false" />
-            <element signature="e#2350#2351#0" expanded="false" />
-            <element signature="e#2395#2396#0" expanded="false" />
-            <element signature="e#2581#2582#0" expanded="false" />
-            <element signature="e#2619#2620#0" expanded="false" />
-            <element signature="e#2778#2779#0" expanded="false" />
-            <element signature="e#2817#2818#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2712,8 +2672,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/ParseUtils/ParseMedicalHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7030412">
-          <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
           <folding>
             <element signature="e#761#774#0" expanded="true" />
             <element signature="e#1451#1464#0" expanded="true" />
@@ -2722,6 +2682,24 @@
             <element signature="e#3231#3232#0" expanded="true" />
             <element signature="e#3454#3965#0" expanded="true" />
             <element signature="e#3964#3965#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/model/items.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jimbofer/hime/model/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04644809">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+          <folding>
+            <element signature="e#1186#1187#0" expanded="true" />
           </folding>
         </state>
       </provider>

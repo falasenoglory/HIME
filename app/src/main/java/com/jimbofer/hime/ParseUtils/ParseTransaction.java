@@ -5,6 +5,7 @@ import android.util.Log;
 import com.jimbofer.hime.model.Transaction;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
@@ -169,6 +170,23 @@ public class ParseTransaction {
         deleteTransaction(objID);
         addTransaction(patientID, insuranceID, hospitalID, doctorID, transtype, transdesc, transdate, transprice);
 
+    }
+    public static List<Transaction> getAllTransactionOfPatient(String patientID){
+        List<ParseObject> list = new ArrayList<>();
+        List<Transaction> parseTransaction = new ArrayList<>();
+
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
+        query.whereEqualTo("patientID", patientID);
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+            parseTransaction.add(trans);
+        }
+        return parseTransaction;
     }
 
 }
