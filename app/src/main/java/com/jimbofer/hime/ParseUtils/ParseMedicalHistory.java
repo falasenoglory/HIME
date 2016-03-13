@@ -2,7 +2,7 @@ package com.jimbofer.hime.ParseUtils;
 
 import android.util.Log;
 
-import com.jimbofer.hime.model.HospitalAdmin;
+import com.jimbofer.hime.model.MedicalHistory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -15,19 +15,18 @@ import java.util.List;
 /**
  * Created by Christian on 3/11/2016.
  */
-public class Parse_HospitalAdmin {
-    public static ArrayList<HospitalAdmin> parseHospitalAdmin = new ArrayList<>();
-    public static HospitalAdmin hosAd;
-
-    public static ArrayList<HospitalAdmin> getAllHospitalAdmin(){
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
+public class ParseMedicalHistory {
+    public static ArrayList<MedicalHistory> parseMedHistory = new ArrayList<>();
+    public static MedicalHistory medh;
+    public static ArrayList<MedicalHistory> getAllMedicalHistory(){
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("MedicalHistory");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
                 if (e == null) {
                     for (ParseObject obj : markers) {
-                        HospitalAdmin hospAd = new HospitalAdmin (obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
-                        parseHospitalAdmin.add(hospAd);
+                        MedicalHistory medhis = new MedicalHistory(obj.getString("objectId"), obj.getString("dateDiagnose"), obj.getString("medHistory"), obj.getString("patientID"));
+                        parseMedHistory.add(medhis);
                     }
 
                 } else {
@@ -36,18 +35,18 @@ public class Parse_HospitalAdmin {
             }
 
         });
-        return parseHospitalAdmin;
+        return parseMedHistory;
     }
-    public static HospitalAdmin getCertainHospitalAdminDetails(String objID){
+    public static MedicalHistory getCertainMedicalHistoryDetails(String objID){
 
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Hospital");
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("MedicalHistory");
         query2.whereEqualTo("objectId", objID);
         query2.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
                     for (ParseObject obj : list) {
-                        hosAd = new HospitalAdmin (obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
+                        medh = new MedicalHistory(obj.getString("objectId"),obj.getString("dateDiagnose"),obj.getString("medHistory"),obj.getString("patientID"));
 
                     }
                 }else{
@@ -56,24 +55,24 @@ public class Parse_HospitalAdmin {
 
             }
         });
-        if(hosAd!=null) {
-            return hosAd;
+        if(medh!=null) {
+            return medh;
         }
         else {
             Log.d("Error", "Returned null (Get certain)");
-            return hosAd;
+            return medh;
         }
     }
     public static int ListSize(){
-        final ArrayList<HospitalAdmin> List= new ArrayList<>();
+        final ArrayList<MedicalHistory> List= new ArrayList<>();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
                 if (e == null) {
                     for (ParseObject obj : markers) {
-                        HospitalAdmin hospAdl = new HospitalAdmin (obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
-                        List.add(hospAdl);
+                        MedicalHistory medhisl = new MedicalHistory(obj.getString("objectId"),obj.getString("dateDiagnose"),obj.getString("medHistory"),obj.getString("patientID"));
+                        List.add(medhisl);
                     }
 
                 } else {
@@ -82,18 +81,14 @@ public class Parse_HospitalAdmin {
             }
 
         });
-        return Integer.parseInt(List.get(List.size() - 1).getHospitalId());
+        return List.size();
     }
-    public void addHospital(String hospname, String hospadd, String hospHMOConNo, String lat,String lang){
-        int HospitalID = ListSize()+1;
-        ParseObject storyActivity = new ParseObject("Hospital");
-        storyActivity.put("hospitalID", HospitalID);
-        storyActivity.put("hospitalName", hospname);
-        storyActivity.put("hospitalAddres",hospadd);
-        storyActivity.put("hospitalHMOContactNumber",hospHMOConNo);
-        storyActivity.put("latitude",lat);
-        storyActivity.put("longitude",lang);
+    public void addMedicalHistory(String PatientID,String datediag,String medhis){
 
+        ParseObject storyActivity = new ParseObject("MedicalHistory");
+        storyActivity.put("patientID", PatientID);
+        storyActivity.put("dateDiagnose", datediag);
+        storyActivity.put("medHistory",medhis);
         storyActivity.saveInBackground(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
@@ -104,9 +99,10 @@ public class Parse_HospitalAdmin {
                 }
             }
         });
+
     }
-    public void deleteHospital(String objID){
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Hospital");
+    public void deleteMedicalHistory(String objID){
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("MedicalHistory");
         query2.whereEqualTo("objectId", objID);
         query2.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -132,4 +128,5 @@ public class Parse_HospitalAdmin {
             }
         });
     }
+
 }
