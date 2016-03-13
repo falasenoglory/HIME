@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Christian on 3/11/2016.
  */
-public class Parse_MedicalHistory {
+public class ParseMedicalHistory {
     public static ArrayList<MedicalHistory> parseMedHistory = new ArrayList<>();
     public static MedicalHistory medh;
     public static ArrayList<MedicalHistory> getAllMedicalHistory(){

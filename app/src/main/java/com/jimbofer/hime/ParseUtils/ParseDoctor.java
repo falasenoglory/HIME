@@ -1,7 +1,8 @@
 package com.jimbofer.hime.ParseUtils;
 
+import android.content.Intent;
 import android.util.Log;
-
+import android.widget.Toast;
 import com.jimbofer.hime.model.Doctor;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * Created by Christian on 3/11/2016.
  */
-public class Parse_Doctor {
+public class ParseDoctor {
     public static ArrayList<Doctor> parseDoctor = new ArrayList<>();
     public static Doctor doct;
 
@@ -66,7 +67,7 @@ public class Parse_Doctor {
     }
     public static int ListSize(){
         final ArrayList<Doctor> List= new ArrayList<>();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Doctor");
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
@@ -134,10 +135,6 @@ public class Parse_Doctor {
                 }
             }
         });
-    }
-    public void editDoctor(String objID,String hospID,String insID,String fname,String lname,String specialization,String contactNo,String gender,String transPrice){
-        deleteDoctor(objID);
-        addDoctor(hospID, insID, fname, lname, specialization, contactNo, gender, transPrice);
     }
 }
 

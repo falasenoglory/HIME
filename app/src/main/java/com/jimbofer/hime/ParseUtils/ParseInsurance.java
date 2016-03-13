@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Christian on 3/11/2016.
  */
-public class Parse_Insurance {
+public class ParseInsurance {
     public static ArrayList<Insurance> parseDoctor = new ArrayList<>();
     public static Insurance ins;
 

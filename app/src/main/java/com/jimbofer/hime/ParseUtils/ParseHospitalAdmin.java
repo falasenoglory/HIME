@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Christian on 3/11/2016.
  */
-public class Parse_HospitalAdmin {
+public class ParseHospitalAdmin {
     public static ArrayList<HospitalAdmin> parseHospitalAdmin = new ArrayList<>();
     public static HospitalAdmin hosAd;
 

@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.constants.Constants;
@@ -97,6 +98,7 @@ public class HomeActivity extends AppCompatActivity
             bundle.putString(Constants.ROLE_KEY, role);
             bundle.putString(Constants.USERNAME_KEY, username);
             fragment.setArguments(bundle);
+            Toast.makeText(getApplicationContext(), "Kayat", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_history) {
             //do something..
         } else if (id == R.id.nav_transaction) {
