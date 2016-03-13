@@ -21,26 +21,33 @@
         <activity
             android:name=".main_activities.SplashScreenActivity"
             android:label="@string/title_activity_splash_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".main_activities.LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".main_activities.HomeActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".insurance_admin.InsuranceAdminProfile"
-            android:label="@string/title_activity_insurance_admin_profile"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            </activity>
+
+        <activity
+            android:name=".main_activities.InsuranceAdminProfile"
+            android:label="@string/title_activity_insurance_admin_profile"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
-        <activity android:name=".main_activities.ViewPatients"></activity>
+        <activity android:name=".main_activities.ViewPatients" />
+        <activity
+            android:name=".main_activities.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+        </activity>
     </application>
 
 </manifest>
