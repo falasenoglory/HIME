@@ -17,13 +17,15 @@ import java.util.List;
  */
 public class ParseTransaction {
     public static ArrayList<Transaction> parseTransaction = new ArrayList<>();
+
     public static Transaction tran;
     public static int size;
 
+    static FindCallback<ParseObject> findCallback;
     public static ArrayList<Transaction> getAllTransaction() {
         final ArrayList<Transaction> dumLish = new ArrayList<>();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
-        query.findInBackground(new FindCallback<ParseObject>() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Transaction");
+        query.findInBackground(findCallback = new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
                 if (e == null) {
@@ -55,6 +57,23 @@ public class ParseTransaction {
         });
         return dumLish;
 
+    }
+
+    static public List<Transaction> getTransactions(){
+        List<ParseObject> list = new ArrayList<>();
+        List<Transaction> parseTransaction = new ArrayList<>();
+
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+            parseTransaction.add(trans);
+        }
+        return parseTransaction;
     }
 
     public static int ListSize() {
@@ -162,4 +181,5 @@ public class ParseTransaction {
         addTransaction(patientID, insuranceID, hospitalID, doctorID, transtype, transdesc, transdate, transprice);
 
     }
+
 }

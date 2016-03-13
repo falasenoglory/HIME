@@ -7,11 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.jimbofer.hime.ParseUtils.ParseDoctor;
-import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.R;
-import com.jimbofer.hime.model.Doctor;
-import com.jimbofer.hime.model.HospitalAdmin;
 import com.jimbofer.hime.model.Transaction;
 
 import java.util.List;
@@ -53,15 +49,15 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         if(transaction != null){
             String date = transaction.getTransactionDate();
             String day = date.split("/")[1];
-            String month = date.split("/")[2];
+            String month = date.split("/")[0];
             transactionHolder.tvDate.setText(day);
             transactionHolder.tvMonth.setText(month);
-            Doctor doctor = ParseDoctor.getCertainDoctorDetails(transaction.getDoctorID());
-            transactionHolder.tvDoctorName.setText(doctor.getLastname() + ", " + doctor.getFirstname());
-            HospitalAdmin hospital = ParseHospitalAdmin.getCertainHospitalAdminDetails(transaction.getHospitalID());
-            transactionHolder.tvHospitalName.setText(hospital.getHospitalName());
+//            Doctor doctor = ParseDoctor.getCertainDoctorDetails(transaction.getDoctorID());
+//            transactionHolder.tvDoctorName.setText(doctor.getLastname() + ", " + doctor.getFirstname());
+//            HospitalAdmin hospital = ParseHospitalAdmin.getCertainHospitalAdminDetails(transaction.getHospitalID());
+//            transactionHolder.tvHospitalName.setText(hospital.getHospitalName());
         }
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 
     public static class TransactionHolder {

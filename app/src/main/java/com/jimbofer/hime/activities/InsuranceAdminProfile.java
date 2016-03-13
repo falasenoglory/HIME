@@ -1,4 +1,4 @@
-package com.jimbofer.hime.main_activities;
+package com.jimbofer.hime.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
