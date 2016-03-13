@@ -28,5 +28,7 @@
     <string name="address">Address:</string>
     <string name="birthday">Birthday:</string>
     <string name="title_activity_insurance_admin_profile">Insurance Admin</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
 

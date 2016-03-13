@@ -8,25 +8,25 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.jimbofer.hime.R;
-import com.jimbofer.hime.model.Patient;
+import com.jimbofer.hime.model.HospitalAdmin;
 
 import java.util.List;
 
 /**
  * Created by Shanyl Jimenez on 3/13/2016.
  */
-public class ViewPatientAdapter extends ArrayAdapter<Patient> {
+public class ViewHospitalAdapter extends ArrayAdapter<HospitalAdmin> {
 
     private Context mContext;
     private int         mLayoutId;
-    private List<Patient> mPatients;
+    private List<HospitalAdmin> mHospitals;
 
-    public ViewPatientAdapter(Context context, int resource, List<Patient> patients) {
+    public ViewHospitalAdapter(Context context, int resource, List<HospitalAdmin> patients) {
         super(context, resource, patients);
 
         mContext = context;
         mLayoutId = resource;
-        mPatients = patients;
+        mHospitals = patients;
     }
 
     @Override
@@ -48,15 +48,15 @@ public class ViewPatientAdapter extends ArrayAdapter<Patient> {
         }
 
         // Set the movie data
-        Patient pa = mPatients.get(position);
+        HospitalAdmin pa = mHospitals.get(position);
 
         if (pa != null) {
 
             if (viewHolder.txtName != null) {
-                viewHolder.txtName.setText(pa.getLastName()+", " +pa.getFirstName() +" " +pa.getMiddleInitial());
+                viewHolder.txtName.setText(pa.getHospitalName());
             }
             if (viewHolder.txtID != null) {
-                viewHolder.txtID.setText(pa.getPatientID());
+                viewHolder.txtID.setText(pa.getHospitalAddress());
             }
         }
 

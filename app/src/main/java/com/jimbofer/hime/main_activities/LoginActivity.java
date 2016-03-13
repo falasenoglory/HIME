@@ -64,16 +64,18 @@ public class LoginActivity extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-//                            if (username.equals("HospitalAdmin")) {
-//                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
-//                                startActivity(intent);
-//                                finish();
-//                            }
-//                            if (username.equals("Insurance")) {
-//                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
-//                                startActivity(intent);
-//                                finish();
-//                            }
+                            if (username.equals("HospitalAdmin")) {
+                                Intent intent = new Intent(LoginActivity.this, InsuranceAdminProfile.class);//change activity
+                                startActivity(intent);
+                                finish();
+                            }
+                            if (username.equals("Insurance")) {
+                                Intent intent = new Intent(LoginActivity.this, InsuranceAdminProfile.class);//change activity
+                                intent.putExtra("username",username);
+                                intent.putExtra("role", role);
+                                startActivity(intent);
+                                finish();
+                            }
                         } else if (user == null) {
                             Toast.makeText(getApplicationContext(), "Error in log-in. Username and Password did not match.", Toast.LENGTH_SHORT).show();
                         }
