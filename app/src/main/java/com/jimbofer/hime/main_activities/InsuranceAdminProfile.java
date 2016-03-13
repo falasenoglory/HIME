@@ -1,14 +1,14 @@
-package com.jimbofer.hime.insurance_admin;
+package com.jimbofer.hime.main_activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jimbofer.hime.R;
-import com.jimbofer.hime.fragments.ListViewFragment;
+import com.jimbofer.hime.fragments.ListViewFragmentInsuranceAdmin;
 
 public class InsuranceAdminProfile extends AppCompatActivity {
 
-    private ListViewFragment mListViewFragment;
+    private ListViewFragmentInsuranceAdmin mListViewFragmentInsuranceAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,11 @@ public class InsuranceAdminProfile extends AppCompatActivity {
 //        });
 
 
-        mListViewFragment = ListViewFragment.newInstance();
+        mListViewFragmentInsuranceAdmin = ListViewFragmentInsuranceAdmin.newInstance();
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragmentContainer, mListViewFragment)
+                .replace(R.id.fragmentContainer, mListViewFragmentInsuranceAdmin)
                 .commit();
 
 
