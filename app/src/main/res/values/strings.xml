@@ -27,5 +27,6 @@
     <string name="name">Name:</string>
     <string name="address">Address:</string>
     <string name="birthday">Birthday:</string>
+    <string name="title_activity_insurance_admin_profile">Insurance Admin</string>
 </resources>
 

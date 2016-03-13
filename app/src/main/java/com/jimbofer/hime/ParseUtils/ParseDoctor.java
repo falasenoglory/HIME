@@ -3,8 +3,6 @@ package com.jimbofer.hime.ParseUtils;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.jimbofer.hime.Constants;
 import com.jimbofer.hime.model.Doctor;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -22,14 +20,14 @@ public class ParseDoctor {
     public static ArrayList<Doctor> parseDoctor = new ArrayList<>();
     public static Doctor doct;
 
-    public static ArrayList<Doctor> getAllDoctor() {
+    public static ArrayList<Doctor> getAllDoctor(){
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Doctor");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
                 if (e == null) {
                     for (ParseObject obj : markers) {
-                        Doctor doc = new Doctor(obj.getString("objectId"), obj.getString("doctorID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("doctorContactNumber"), obj.getString("gender"), obj.getString("transactionPrice"));
+                        Doctor doc = new Doctor(obj.getString("objectId"),obj.getString("doctorID"),obj.getString("insuranceID"),obj.getString("hospitalID"),obj.getString("doctorFirstName"),obj.getString("doctorLastName"),obj.getString("doctorSpecialization"),obj.getString("doctorContactNumber"),obj.getString("gender"),obj.getString("transactionPrice"));
                         parseDoctor.add(doc);
                     }
 
@@ -38,11 +36,10 @@ public class ParseDoctor {
                 }
             }
 
-        });
+    });
         return parseDoctor;
-    }
-
-    public static Doctor getCertainDoctorDetails(String objID) {
+}
+    public static Doctor getCertainDoctorDetails(String objID){
 
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Doctor");
         query2.whereEqualTo("objectId", objID);
@@ -51,32 +48,32 @@ public class ParseDoctor {
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
                     for (ParseObject obj : list) {
-                        doct = new Doctor(obj.getString("objectId"), obj.getString("doctorID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("doctorContactNumber"), obj.getString("gender"), obj.getString("transactionPrice"));
+                        doct = new Doctor(obj.getString("objectId"),obj.getString("doctorID"),obj.getString("insuranceID"),obj.getString("hospitalID"),obj.getString("doctorFirstName"),obj.getString("doctorLastName"),obj.getString("doctorSpecialization"),obj.getString("doctorContactNumber"),obj.getString("gender"),obj.getString("transactionPrice"));
 
                     }
-                } else {
+                }else{
                     Log.d("role_patient error", "e");
                 }
 
             }
         });
-        if (doct != null) {
+        if(doct!=null) {
             return doct;
-        } else {
+        }
+        else {
             Log.d("Error", "Returned null (Get certain)");
             return doct;
         }
     }
-
-    public static int ListSize() {
-        final ArrayList<Doctor> List = new ArrayList<>();
+    public static int ListSize(){
+        final ArrayList<Doctor> List= new ArrayList<>();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
                 if (e == null) {
                     for (ParseObject obj : markers) {
-                        Doctor docl = new Doctor(obj.getString("objectId"), obj.getString("doctorID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("doctorContactNumber"), obj.getString("gender"), obj.getString("transactionPrice"));
+                        Doctor docl = new Doctor(obj.getString("objectId"),obj.getString("doctorID"),obj.getString("insuranceID"),obj.getString("hospitalID"),obj.getString("doctorFirstName"),obj.getString("doctorLastName"),obj.getString("doctorSpecialization"),obj.getString("doctorContactNumber"),obj.getString("gender"),obj.getString("transactionPrice"));
                         List.add(docl);
                     }
 
@@ -86,19 +83,18 @@ public class ParseDoctor {
             }
 
         });
-        return Integer.parseInt(List.get(List.size() - 1).getDoctorId());
+        return  Integer.parseInt(List.get(List.size() - 1).getDoctorId());
     }
-
-    public void addDoctor(String hospID, String insID, String fname, String lname, String specialization, String contactNo, String gender, String transPrice) {
-        int DoctorID = ListSize() + 1;
+    public void addDoctor(String hospID,String insID,String fname,String lname,String specialization,String contactNo,String gender,String transPrice){
+        int DoctorID = ListSize()+1;
         ParseObject storyActivity = new ParseObject("Doctor");
         storyActivity.put("doctorID", DoctorID);
         storyActivity.put("hospitalID", hospID);
-        storyActivity.put("insuranceID", insID);
-        storyActivity.put("doctorFirstName", fname);
-        storyActivity.put("doctorLastName", lname);
-        storyActivity.put("doctorSpecialization", specialization);
-        storyActivity.put("doctorContactNumber", contactNo);
+        storyActivity.put("insuranceID",insID);
+        storyActivity.put("doctorFirstName",fname);
+        storyActivity.put("doctorLastName",lname);
+        storyActivity.put("doctorSpecialization",specialization);
+        storyActivity.put("doctorContactNumber",contactNo);
         storyActivity.put("gender", gender);
         storyActivity.put("transactionPrice", transPrice);
 
@@ -113,8 +109,7 @@ public class ParseDoctor {
             }
         });
     }
-
-    public void deleteDoctor(String objID) {
+    public void deleteDoctor(String objID){
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Doctor");
         query2.whereEqualTo("objectId", objID);
         query2.findInBackground(new FindCallback<ParseObject>() {

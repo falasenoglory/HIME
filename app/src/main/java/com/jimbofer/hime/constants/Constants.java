@@ -1,4 +1,4 @@
-package com.jimbofer.hime;
+package com.jimbofer.hime.constants;
 
 /**
  * Created by Christian on 2/25/2016.

@@ -66,7 +66,7 @@ public class ParseHospitalAdmin {
     }
     public static int ListSize(){
         final ArrayList<HospitalAdmin> List= new ArrayList<>();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
@@ -131,5 +131,9 @@ public class ParseHospitalAdmin {
                 }
             }
         });
+    }
+    public void editHospital(String objID, String hospname, String hospadd, String hospHMOConNo, String lat,String lang){
+        deleteHospital(objID);
+        addHospital(hospname, hospadd, hospHMOConNo, lat, lang);
     }
 }

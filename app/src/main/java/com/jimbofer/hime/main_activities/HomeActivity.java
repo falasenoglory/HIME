@@ -1,4 +1,4 @@
-package com.jimbofer.hime;
+package com.jimbofer.hime.main_activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -12,8 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.jimbofer.hime.R;
+import com.jimbofer.hime.constants.Constants;
 import com.jimbofer.hime.fragments.ProfileFragment;
-import com.jimbofer.hime.fragments.TransactionFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -101,7 +102,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_history) {
             //do something..
         } else if (id == R.id.nav_transaction) {
-            fragment = new TransactionFragment();
+         //   fragment = new TransactionFragment();
         } else if (id == R.id.nav_hospital) {
             //do something
         } else if (id == R.id.nav_insurance) {

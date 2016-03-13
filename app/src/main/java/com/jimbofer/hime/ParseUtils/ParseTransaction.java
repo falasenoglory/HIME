@@ -158,4 +158,9 @@ public class ParseTransaction {
             }
         });
     }
+    public void editTransaction(String objID,String patientID,String insuranceID,String hospitalID,String doctorID,String transtype,String transdesc,String transdate,String transprice){
+        deleteTransaction(objID);
+        addTransaction(patientID, insuranceID, hospitalID, doctorID, transtype, transdesc, transdate, transprice);
+
+    }
 }

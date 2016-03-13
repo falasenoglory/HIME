@@ -1,9 +1,11 @@
-package com.jimbofer.hime;
+package com.jimbofer.hime.main_activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import com.jimbofer.hime.R;
 
 /**
  * Created by Eugene Boholst on 3/12/2016.

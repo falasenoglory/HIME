@@ -65,7 +65,7 @@ public class ParseMedicalHistory {
     }
     public static int ListSize(){
         final ArrayList<MedicalHistory> List= new ArrayList<>();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("MedicalHistory");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> markers, ParseException e) {
@@ -127,6 +127,10 @@ public class ParseMedicalHistory {
                 }
             }
         });
+    }
+    public void editMedicalHistory(String objID,String PatientID,String datediag,String medhis){
+        deleteMedicalHistory(objID);
+        addMedicalHistory(PatientID,datediag,medhis);
     }
 
 }
