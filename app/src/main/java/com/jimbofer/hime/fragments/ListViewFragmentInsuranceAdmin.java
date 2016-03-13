@@ -1,5 +1,6 @@
 package com.jimbofer.hime.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,18 +14,19 @@ import android.widget.ListView;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.adapter.ItemAdapter;
 import com.jimbofer.hime.controllers.InsuranceAdminControllers;
+import com.jimbofer.hime.main_activities.ViewPatients;
 
 
 /**
  * A placeholder fragment containing a {@link ListView}.
  */
-public class ListViewFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ListViewFragmentInsuranceAdmin extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView mListView;
     private InsuranceAdminControllers mController;
 
-    public static ListViewFragment newInstance() {
-        return new ListViewFragment();
+    public static ListViewFragmentInsuranceAdmin newInstance() {
+        return new ListViewFragmentInsuranceAdmin();
     }
 
     @Override
@@ -36,7 +38,7 @@ public class ListViewFragment extends Fragment implements AdapterView.OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_listviewInsuranceAdmin, container, false);
+        return inflater.inflate(R.layout.fragment_listviewinsuranceadmin, container, false);
     }
 
     @Override
@@ -66,8 +68,12 @@ public class ListViewFragment extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Intent intent = new Intent(getActivity(), MovieDetailsActivity.class);
-//        intent.putExtra(Constants.EXTRA_POSITION, position);
-//        startActivity(intent);
+
+        if (position==1) {
+            Intent intent = new Intent(getActivity(), ViewPatients.class);
+            intent.putExtra("Position", position);
+            startActivity(intent);
+       }
+
     }
 }

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jimbofer.hime.R;
-import com.jimbofer.hime.models.items;
+import com.jimbofer.hime.model.items;
 
 import java.util.List;
 
