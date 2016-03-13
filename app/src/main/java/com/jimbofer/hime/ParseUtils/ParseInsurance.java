@@ -3,6 +3,7 @@ package com.jimbofer.hime.ParseUtils;
 import android.util.Log;
 
 import com.jimbofer.hime.model.Insurance;
+import com.jimbofer.hime.model.MedicalHistory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -18,49 +19,39 @@ public class ParseInsurance {
     public static ArrayList<Insurance> parseDoctor = new ArrayList<>();
     public static Insurance ins;
 
-    public static ArrayList<Insurance> getAllInsurance(){
+    public static List<Insurance> getAllInsurance(){
+        List<ParseObject> list = new ArrayList<>();
+        List<Insurance> parseInsurance = new ArrayList<>();
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Insurance");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> markers, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : markers) {
-                        Insurance insurance = new Insurance(obj.getString("objectId"),obj.getString("insuranceID"),obj.getString("insuranceName"),obj.getString("insurancePolicy"),obj.getString("insuranceContactNumber"),obj.getString("insuranceAddress"));
-                        parseDoctor.add(insurance);
-                    }
-
-                } else {
-                    // handle Parse Exception here
-                }
-            }
-
-        });
-        return parseDoctor;
-    }
-    public static Insurance getCertainInsurancDetails(String objID){
-
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Insurance");
-        query2.whereEqualTo("objectId", objID);
-        query2.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : list) {
-                        ins = new Insurance(obj.getString("objectId"),obj.getString("insuranceID"),obj.getString("insuranceName"),obj.getString("insurancePolicy"),obj.getString("insuranceContactNumber"),obj.getString("insuranceAddress"));
-
-                    }
-                }else{
-                    Log.d("role_patient error", "e");
-                }
-
-            }
-        });
-        if(ins!=null) {
-            return ins;
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        else {
-            Log.d("Error", "Returned null (Get certain)");
-            return ins;
+        for (ParseObject obj : list) {
+            Insurance ins = new Insurance(obj.getString("objectId"),obj.getString("insuranceID"),obj.getString("insuranceName"),obj.getString("insurancePolicy"),obj.getString("insuranceContactNumber"),obj.getString("insuranceAddress"));
+            parseInsurance.add(ins);
         }
+        return parseInsurance;
+        }
+    public static Insurance getCertainInsurancDetails(String objID) {
+
+
+        List<ParseObject> list = new ArrayList<>();
+
+        Insurance ins = null;
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Insurance");
+        query.whereEqualTo("objectId", objID);
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            ins = new Insurance(obj.getString("objectId"),obj.getString("insuranceID"),obj.getString("insuranceName"),obj.getString("insurancePolicy"),obj.getString("insuranceContactNumber"),obj.getString("insuranceAddress"));
+
+        }
+        return ins;
     }
 }

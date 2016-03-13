@@ -1,4 +1,4 @@
-package com.jimbofer.hime.adapters;
+package com.jimbofer.hime.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
