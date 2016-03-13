@@ -19,7 +19,8 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
 
     private Context mContext;
     private int mLayoutId;
-    private List<Transaction> transactions;
+    private static List<Transaction> transactions;
+    private static int position;
 
     public TransactionAdapter(Context context, int resource, List<Transaction> objects) {
         super(context, resource, objects);
@@ -52,6 +53,7 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
             String month = date.split("/")[0];
             transactionHolder.tvDate.setText(day);
             transactionHolder.tvMonth.setText(month);
+            this.position = position;
 //            Doctor doctor = ParseDoctor.getCertainDoctorDetails(transaction.getDoctorID());
 //            transactionHolder.tvDoctorName.setText(doctor.getLastname() + ", " + doctor.getFirstname());
 //            HospitalAdmin hospital = ParseHospitalAdmin.getCertainHospitalAdminDetails(transaction.getHospitalID());
@@ -60,10 +62,15 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         return convertView;
     }
 
-    public static class TransactionHolder {
+    public static class TransactionHolder implements View.OnClickListener{
         private TextView tvDate;
         private TextView tvMonth;
         private TextView tvHospitalName;
         private TextView tvDoctorName;
+
+        @Override
+        public void onClick(View v) {
+            Transaction transaction = transactions.get(position);
+        }
     }
 }
