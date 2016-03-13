@@ -1,4 +1,4 @@
-package com.jimbofer.hime.models;
+package com.jimbofer.hime.model;
 
 /**
  * Created by Shanyl Jimenez on 3/12/2016.

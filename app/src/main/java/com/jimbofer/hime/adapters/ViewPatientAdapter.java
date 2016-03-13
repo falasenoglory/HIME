@@ -1,4 +1,4 @@
-package com.jimbofer.hime.adapter;
+package com.jimbofer.hime.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -53,7 +53,7 @@ public class ViewPatientAdapter extends ArrayAdapter<Patient> {
         if (pa != null) {
 
             if (viewHolder.txtName != null) {
-                viewHolder.txtName.setText(pa.getLastName()+", " +pa.getFirstName() +" ");
+                viewHolder.txtName.setText(pa.getLastName()+", " +pa.getFirstName() +" " +pa.getMiddleInitial());
             }
             if (viewHolder.txtID != null) {
                 viewHolder.txtID.setText(pa.getPatientID());

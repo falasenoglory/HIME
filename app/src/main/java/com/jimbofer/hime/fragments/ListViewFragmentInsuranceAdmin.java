@@ -11,20 +11,20 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jimbofer.hime.R;
-import com.jimbofer.hime.adapter.ItemAdapter;
+import com.jimbofer.hime.adapters.ItemAdapter;
 import com.jimbofer.hime.controllers.InsuranceAdminControllers;
 
 
 /**
  * A placeholder fragment containing a {@link ListView}.
  */
-public class ListViewFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ListViewFragmentInsuranceAdmin extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView mListView;
     private InsuranceAdminControllers mController;
 
-    public static ListViewFragment newInstance() {
-        return new ListViewFragment();
+    public static ListViewFragmentInsuranceAdmin newInstance() {
+        return new ListViewFragmentInsuranceAdmin();
     }
 
     @Override

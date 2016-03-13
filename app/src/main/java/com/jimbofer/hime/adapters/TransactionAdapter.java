@@ -1,18 +1,13 @@
 package com.jimbofer.hime.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.jimbofer.hime.ParseUtils.ParseDoctor;
-import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.R;
-import com.jimbofer.hime.model.Doctor;
-import com.jimbofer.hime.model.HospitalAdmin;
 import com.jimbofer.hime.model.Transaction;
 
 import java.util.List;

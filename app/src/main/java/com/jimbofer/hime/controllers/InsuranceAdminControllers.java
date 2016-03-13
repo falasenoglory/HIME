@@ -1,6 +1,6 @@
 package com.jimbofer.hime.controllers;
 
-import com.jimbofer.hime.models.items;
+import com.jimbofer.hime.model.items;
 
 import java.util.ArrayList;
 import java.util.List;

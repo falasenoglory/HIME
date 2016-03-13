@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,6 @@ import com.jimbofer.hime.ParseUtils.ParseTransaction;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.adapters.TransactionAdapter;
 import com.jimbofer.hime.model.Transaction;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;

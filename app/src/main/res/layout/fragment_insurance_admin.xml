@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="30dp">
 
     <ImageView
         android:id="@+id/imgInsuranceAdmin"
@@ -13,10 +14,20 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Shanyl Jimenez"
+        android:textColor="@android:color/white"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:gravity="center"
+        android:textColor="@color/colorAccent"
         android:text="Insurance Admin"/>
 
 </LinearLayout>
