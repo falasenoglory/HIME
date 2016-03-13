@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class ParseTransaction {
     public static ArrayList<Transaction> parseTransaction = new ArrayList<>();
-    private OnDataPass dataPasser;
     public static Transaction tran;
     public static int size;
 

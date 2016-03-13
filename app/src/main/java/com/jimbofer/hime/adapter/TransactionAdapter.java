@@ -1,7 +1,6 @@
-package com.jimbofer.hime.adapters;
+package com.jimbofer.hime.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
