@@ -19,70 +19,56 @@ public class ParseHospitalAdmin {
     public static ArrayList<HospitalAdmin> parseHospitalAdmin = new ArrayList<>();
     public static HospitalAdmin hosAd;
 
-    public static ArrayList<HospitalAdmin> getAllHospitalAdmin(){
+    public static List<HospitalAdmin> getAllHospitalAdmin(){
+        List<ParseObject> list = new ArrayList<>();
+        List<HospitalAdmin> parseHospital = new ArrayList<>();
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> markers, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : markers) {
-                        HospitalAdmin hospAd = new HospitalAdmin (obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
-                        parseHospitalAdmin.add(hospAd);
-                    }
-
-                } else {
-                    // handle Parse Exception here
-                }
-            }
-
-        });
-        return parseHospitalAdmin;
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+           HospitalAdmin hosp = new HospitalAdmin(obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
+            parseHospital.add(hosp);
+    }
+        return parseHospital;
     }
     public static HospitalAdmin getCertainHospitalAdminDetails(String objID){
 
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Hospital");
-        query2.whereEqualTo("objectId", objID);
-        query2.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : list) {
-                        hosAd = new HospitalAdmin (obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
 
-                    }
-                }else{
-                    Log.d("role_patient error", "e");
-                }
+        List<ParseObject> list = new ArrayList<>();
 
-            }
-        });
-        if(hosAd!=null) {
-            return hosAd;
+        HospitalAdmin hosp = null;
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
+        query.whereEqualTo("objectId", objID);
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        else {
-            Log.d("Error", "Returned null (Get certain)");
-            return hosAd;
+        for (ParseObject obj : list) {
+           hosp = new HospitalAdmin(obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
+
         }
+        return hosp;
     }
     public static int ListSize(){
-        final ArrayList<HospitalAdmin> List= new ArrayList<>();
+        List<ParseObject> list = new ArrayList<>();
+        List<HospitalAdmin> parseHospital = new ArrayList<>();
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> markers, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : markers) {
-                        HospitalAdmin hospAdl = new HospitalAdmin (obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
-                        List.add(hospAdl);
-                    }
-
-                } else {
-                    // handle Parse Exception here
-                }
-            }
-
-        });
-        return Integer.parseInt(List.get(List.size() - 1).getHospitalId());
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+           HospitalAdmin hosp= new HospitalAdmin(obj.getString("objectId"),obj.getString("hospitalID"),obj.getString("hospitalName"),obj.getString("hospitalAddress"),obj.getString("hospitalHMOContactNumber"),obj.getString("longitude"),obj.getString("latitude"));
+            parseHospital.add(hosp);
+        }
+        return Integer.parseInt(parseHospital.get(parseHospital.size() - 1).getHospitalId());
     }
     public void addHospital(String hospname, String hospadd, String hospHMOConNo, String lat,String lang){
         int HospitalID = ListSize()+1;

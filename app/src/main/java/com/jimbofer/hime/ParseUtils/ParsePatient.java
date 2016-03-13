@@ -20,71 +20,57 @@ public class ParsePatient {
     public static Patient pat;
     public static int size;
 
-    public static ArrayList<Patient> getAllPatient() {
+    public static List<Patient> getAllPatient() {
+        List<ParseObject> list = new ArrayList<>();
+        List<Patient> parsePatient = new ArrayList<>();
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Patient");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> markers, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : markers) {
-                        Patient pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
-                        parsePatient.add(pat);
-                    }
-
-                } else {
-                    // handle Parse Exception here
-                }
-            }
-
-        });
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+           Patient pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
+            parsePatient.add(pat);
+        }
         return parsePatient;
     }
 
     public static Patient getCertainPatientDetails(String objID) {
 
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Patient");
-        query2.whereEqualTo("objectId", objID);
-        query2.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : list) {
-                        Patient pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
-                    }
-                } else {
-                    Log.d("role_patient error", "e");
-                }
+        List<ParseObject> list = new ArrayList<>();
 
-            }
-        });
-        if (pat != null) {
-            return pat;
-        } else {
-            Log.d("Error", "Returned null (Get certain)");
-            return pat;
+        Patient pat = null;
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Patient");
+        query.whereEqualTo("objectId", objID);
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+        for (ParseObject obj : list) {
+            pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
+
+        }
+        return pat;
     }
 
     public static int ListSize() {
-        final ArrayList<Patient> List = new ArrayList<>();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> markers, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : markers) {
-                        Patient pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
-                        parsePatient.add(pat);
-                        List.add(pat);
-                    }
+        List<ParseObject> list = new ArrayList<>();
+        List<Patient> parsePatient = new ArrayList<>();
 
-                } else {
-                    // handle Parse Exception here
-                }
-            }
-
-        });
-        return Integer.parseInt(List.get(List.size() - 1).getPatientID());
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Patient");
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            Patient pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
+            parsePatient.add(pat);
+        }
+        return Integer.parseInt(parsePatient.get(parsePatient.size() - 1).getPatientID());
     }
 
     public void addPatient(String insuranceID, String fname, String lname, String address, String bday, String medhis, String gender, String insbal, String cno) {
@@ -141,6 +127,9 @@ public class ParsePatient {
             }
         });
     }
-
+    public void editPatient(String objID,String insuranceID, String fname, String lname, String address, String bday, String medhis, String gender, String insbal, String cno){
+        deletePatient(objID);
+        addPatient(insuranceID,fname,lname,address,bday,medhis,gender,insbal,cno);
+    }
 
 }

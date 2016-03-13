@@ -18,70 +18,56 @@ import java.util.List;
 public class ParseMedicalHistory {
     public static ArrayList<MedicalHistory> parseMedHistory = new ArrayList<>();
     public static MedicalHistory medh;
-    public static ArrayList<MedicalHistory> getAllMedicalHistory(){
+
+    public static List<MedicalHistory> getAllMedicalHistory(){
+        List<ParseObject> list = new ArrayList<>();
+        List<MedicalHistory> parseMedicalHistory = new ArrayList<>();
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("MedicalHistory");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> markers, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : markers) {
-                        MedicalHistory medhis = new MedicalHistory(obj.getString("objectId"), obj.getString("dateDiagnose"), obj.getString("medHistory"), obj.getString("patientID"));
-                        parseMedHistory.add(medhis);
-                    }
-
-                } else {
-                    // handle Parse Exception here
-                }
-            }
-
-        });
-        return parseMedHistory;
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            MedicalHistory medhis = new MedicalHistory(obj.getString("objectId"),obj.getString("dateDiagnose"),obj.getString("medHistory"),obj.getString("patientID"));
+            parseMedicalHistory.add(medhis);
+        }
+        return parseMedicalHistory;
     }
     public static MedicalHistory getCertainMedicalHistoryDetails(String objID){
 
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("MedicalHistory");
-        query2.whereEqualTo("objectId", objID);
-        query2.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : list) {
-                        medh = new MedicalHistory(obj.getString("objectId"),obj.getString("dateDiagnose"),obj.getString("medHistory"),obj.getString("patientID"));
+        List<ParseObject> list = new ArrayList<>();
 
-                    }
-                }else{
-                    Log.d("role_patient error", "e");
-                }
+        MedicalHistory medhis = null;
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("MedicalHistory");
+        query.whereEqualTo("objectId", objID);
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+           medhis = new MedicalHistory(obj.getString("objectId"),obj.getString("dateDiagnose"),obj.getString("medHistory"),obj.getString("patientID"));
 
-            }
-        });
-        if(medh!=null) {
-            return medh;
         }
-        else {
-            Log.d("Error", "Returned null (Get certain)");
-            return medh;
-        }
+        return medhis;
     }
     public static int ListSize(){
-        final ArrayList<MedicalHistory> List= new ArrayList<>();
+        List<ParseObject> list = new ArrayList<>();
+        List<MedicalHistory> parsePatient = new ArrayList<>();
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("MedicalHistory");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> markers, ParseException e) {
-                if (e == null) {
-                    for (ParseObject obj : markers) {
-                        MedicalHistory medhisl = new MedicalHistory(obj.getString("objectId"),obj.getString("dateDiagnose"),obj.getString("medHistory"),obj.getString("patientID"));
-                        List.add(medhisl);
-                    }
-
-                } else {
-                    // handle Parse Exception here
-                }
-            }
-
-        });
-        return List.size();
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            MedicalHistory medhis = new MedicalHistory(obj.getString("objectId"),obj.getString("dateDiagnose"),obj.getString("medHistory"),obj.getString("patientID"));
+            parsePatient.add(medhis);
+        }
+        return parsePatient.size();
     }
     public void addMedicalHistory(String PatientID,String datediag,String medhis){
 
@@ -132,5 +118,6 @@ public class ParseMedicalHistory {
         deleteMedicalHistory(objID);
         addMedicalHistory(PatientID,datediag,medhis);
     }
+
 
 }
