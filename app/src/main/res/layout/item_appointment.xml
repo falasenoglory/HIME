@@ -17,7 +17,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/day"
+                android:id="@+id/dayA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -27,7 +27,7 @@
                 android:text="@string/temp_day" />
 
             <TextView
-                android:id="@+id/month"
+                android:id="@+id/monthA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -44,13 +44,33 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/PatientName"
+                android:id="@+id/PatientName2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold"
-                android:text="@string/hospital_name" />
+                android:text="PatientName" />
 
+            <TextView
+                android:id="@+id/Status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:text="Status" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Approve"
+                android:id="@+id/checkBox" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

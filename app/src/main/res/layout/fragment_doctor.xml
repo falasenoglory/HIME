@@ -23,6 +23,7 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
@@ -30,12 +31,23 @@
         android:textColor="@color/colorAccent"
         android:text="Doctor"/>
     <TextView
+        android:id="@+id/txtSpecialization"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:gravity="center"
         android:textColor="@color/colorAccent"
-        android:text="Weekdays"/>
+        android:text="Specialization"/>
+    <TextView
+        android:id="@+id/txtContactNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:text="ContactNo"/>
+
+
     <TextView
         android:id="@+id/txtDoctorSched"
         android:layout_width="match_parent"

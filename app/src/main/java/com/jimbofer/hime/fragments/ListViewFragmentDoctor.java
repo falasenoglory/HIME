@@ -10,11 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.jimbofer.hime.ParseUtils.ParseDoctor;
 import com.jimbofer.hime.R;
+import com.jimbofer.hime.activities.ViewAppointments;
 import com.jimbofer.hime.activities.ViewPatients;
 import com.jimbofer.hime.adapters.ItemAdapter;
+import com.jimbofer.hime.adapters.ViewAppointmentRequest;
 import com.jimbofer.hime.controllers.DoctorControllers;
+import com.jimbofer.hime.model.Doctor;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
 
 /**
  * Created by Christian on 3/13/2016.
@@ -23,6 +32,7 @@ public class ListViewFragmentDoctor extends Fragment implements AdapterView.OnIt
 
 
     private ListView mListView;
+    public String username;
     private DoctorControllers mController;
 
     public static ListViewFragmentDoctor newInstance() {
@@ -33,18 +43,25 @@ public class ListViewFragmentDoctor extends Fragment implements AdapterView.OnIt
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mController = new DoctorControllers();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_listview_doctor, container, false);
+
+
+
+
+
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // find all the views
         mListView = (ListView) view.findViewById(R.id.listView);
+
 //        mTvEmpty = (TextView) view.findViewById(android.R.id.empty);
 
         Log.d("chan", mController.getItem().toString());
@@ -68,7 +85,13 @@ public class ListViewFragmentDoctor extends Fragment implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         if(position==0){
+
+            Intent intent = new Intent(getActivity(), ViewAppointments.class);
+            username = getArguments().getString("doctorUsername");
+            intent.putExtra("username",username);
+            startActivity(intent);
 
         }
         if(position==1) {
