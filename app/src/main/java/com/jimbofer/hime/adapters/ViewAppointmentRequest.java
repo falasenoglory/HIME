@@ -50,6 +50,7 @@ public class ViewAppointmentRequest extends ArrayAdapter<Appointments> {
 
             // create the view holder
             viewHolder = new ViewHolder();
+
             viewHolder.txtDate = (TextView) convertView.findViewById(R.id.dayA);
             viewHolder.txtMonth = (TextView) convertView.findViewById(R.id.monthA);
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.PatientName2);

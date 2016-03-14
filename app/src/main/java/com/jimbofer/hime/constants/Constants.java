@@ -7,7 +7,7 @@ public class Constants {
     public static final String ROLE_PATIENT = "ParsePatient";
     public static final String ROLE_DOCTOR = "ParseDoctor";
     public static final String ROLE_INSURANCE = "ParseInsurance";
-    public static final String ROLE_HospitalAdmin = "ParseHospitalAdmin";
+    public static final String ROLE_HOSPITALADMIN = "ParseHospitalAdmin";
 
     public static final String ROLE_PATIENT_KEY = "Patient";
     public static final String ROLE_DOCTOR_KEY = "Doctor";

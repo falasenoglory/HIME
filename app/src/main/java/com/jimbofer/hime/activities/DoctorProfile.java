@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ public class DoctorProfile extends AppCompatActivity {
         doctSpecialization=(TextView) findViewById(R.id.txtSpecialization);
         doctContactNumber=(TextView) findViewById(R.id.txtContactNo);
 
+        Toast.makeText(getApplicationContext(), "Doctor Profile", Toast.LENGTH_SHORT).show();
         String username = null;
         Intent i = getIntent();
         username = i.getStringExtra(Constants.USERNAME_KEY);
@@ -64,6 +66,7 @@ public class DoctorProfile extends AppCompatActivity {
                         doctContactNumber.setText(obj.getString("doctorContactNumber"));
                         Bundle bundle = new Bundle();
             bundle.putString("doctorUsername", (String) doctName.getText());
+                        Log.d("Chan",obj.getString("doctorFirstName"));
 
 
 
@@ -73,6 +76,7 @@ public class DoctorProfile extends AppCompatActivity {
 
 
                 } else {
+                    Log.d("Chan",e.toString());
                 }
             }
         });

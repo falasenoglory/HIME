@@ -50,26 +50,27 @@ public class LoginActivity extends Activity {
                         if (user != null && e == null) {
                             String role = user.getString("Role");
                             Toast.makeText(getApplicationContext(), role, Toast.LENGTH_SHORT).show();
-                            if (role.equals(Constants.ROLE_PATIENT)) {
+                            if (role.equals(Constants.ROLE_PATIENT_KEY)) {
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);//change activity
                                 intent.putExtra("username",username);
                                 intent.putExtra("role", role);
                                 startActivity(intent);
                                 finish();
                             }
-                            if (role.equals(Constants.ROLE_DOCTOR)) {
-                                Intent intent = new Intent(LoginActivity.this, DoctorActivity.class);//change activity
+                            if (role.equals(Constants.ROLE_DOCTOR_KEY)) {
+                                Intent intent = new Intent(LoginActivity.this, DoctorProfile.class);//change activity
+                                Toast.makeText(getApplicationContext(), "Sud sa if", Toast.LENGTH_SHORT).show();
                                 intent.putExtra(Constants.USERNAME_KEY,username);
                                 intent.putExtra(Constants.ROLE_KEY, role);
                                 startActivity(intent);
                                 finish();
                             }
-                            if (username.equals("HospitalAdmin")) {
+                            if (role.equals(Constants.ROLE_HOSPITALADMIN_KEY)){
                                 Intent intent = new Intent(LoginActivity.this, InsuranceAdminProfile.class);//change activity
                                 startActivity(intent);
                                 finish();
                             }
-                            if (username.equals("Insurance")) {
+                            if (role.equals(Constants.ROLE_INSURANCE_KEY)){
                                 Intent intent = new Intent(LoginActivity.this, InsuranceAdminProfile.class);//change activity
                                 intent.putExtra("username",username);
                                 intent.putExtra("role", role);
@@ -86,6 +87,9 @@ public class LoginActivity extends Activity {
 //                                startActivity(intent);
 //                                finish();
 //                            }
+                            else{
+
+                            }
                         } else if (user == null) {
                             Toast.makeText(getApplicationContext(), "Error in log-in. Username and Password did not match.", Toast.LENGTH_SHORT).show();
                         }
