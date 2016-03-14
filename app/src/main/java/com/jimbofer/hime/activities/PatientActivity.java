@@ -3,24 +3,29 @@ package com.jimbofer.hime.activities;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.jimbofer.hime.ParseUtils.ParsePatient;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.constants.Constants;
 import com.jimbofer.hime.fragments.ProfileFragment;
 import com.jimbofer.hime.fragments.TransactionFragment;
+import com.jimbofer.hime.model.Patient;
 
-public class HomeActivity extends AppCompatActivity
+public class PatientActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private String username;
-    private String role;
+    private static Patient patient;
+    private static String username;
+    private static FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +34,26 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        fragmentManager = getFragmentManager();
 
         Intent intent = getIntent();
-        role = intent.getStringExtra(Constants.ROLE_KEY);
         username = intent.getStringExtra(Constants.USERNAME_KEY);
-        //this should show
+
         navigationView.setCheckedItem(R.id.nav_account);
-//        if (role.equals(Constants.ROLE_PATIENT)) {
-//            navigationView.setCheckedItem(R.id.nav_account);
-//            Fragment fragment = new ProfileFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putString(Constants.ROLE_KEY, role);
-//            bundle.putString(Constants.USERNAME_KEY, username);
-//            fragment.setArguments(bundle);
-//            FragmentManager fragmentManager = getFragmentManager();
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.fragmentContainer, fragment).commit();
-//        }
+        new PerformNavDrawTask().execute();
+//        Fragment fragment = new ProfileFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putString(Constants.PARSE_FIRSTNAME_KEY, patient.getFirstName());
+//        bundle.putString(Constants.PARSE_LASTNAME_KEY, patient.getLastName());
+//        bundle.putString(Constants.PARSE_PATIENTID_KEY, patient.getPatientID());
+//        bundle.putString(Constants.PARSE_BIRTHDAY_KEY, patient.getBirthday());
+//        bundle.putString(Constants.PARSE_ADDRESS_KEY, patient.getAddress());
+//        bundle.putString(Constants.PARSE_GENDER_KEY, patient.getGender());
+//        bundle.putString(Constants.PARSE_CONTACTNUM_KEY, patient.getContactNo());
+//        fragment.setArguments(bundle);
+//        FragmentManager fragmentManager = getFragmentManager();
+//        fragmentManager.beginTransaction()
+//                .replace(R.id.fragmentContainer, fragment).commit();
     }
 
     @Override
@@ -87,23 +95,23 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_account) {
             fragment = new ProfileFragment();
             Bundle bundle = new Bundle();
-            bundle.putString(Constants.ROLE_KEY, role);
-            bundle.putString(Constants.USERNAME_KEY, username);
-            fragment.setArguments(bundle);
-        } else if (id == R.id.nav_account) {
-            fragment = new ProfileFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(Constants.ROLE_KEY, role);
-            bundle.putString(Constants.USERNAME_KEY, username);
+            bundle.putString(Constants.PARSE_PATIENTID_KEY, patient.getPatientID());
+            bundle.putString(Constants.PARSE_BIRTHDAY_KEY, patient.getBirthday());
+            bundle.putString(Constants.PARSE_ADDRESS_KEY, patient.getAddress());
+            bundle.putString(Constants.PARSE_GENDER_KEY, patient.getGender());
+            bundle.putString(Constants.PARSE_CONTACTNUM_KEY, patient.getContactNo());
             fragment.setArguments(bundle);
             Toast.makeText(getApplicationContext(), "Kayat", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_history) {
             //do something..
         } else if (id == R.id.nav_transaction) {
             fragment = new TransactionFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.PARSE_PATIENTID_KEY, patient.getPatientID());
+            fragment.setArguments(bundle);
         } else if (id == R.id.nav_hospital) {
             //do something
         } else if (id == R.id.nav_insurance) {
@@ -119,5 +127,32 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static class PerformNavDrawTask extends AsyncTask<Void, Void, Patient>
+
+    {
+
+        @Override
+        protected Patient doInBackground(Void... params) {
+            return ParsePatient.getCertainPatientDetails(username);
+        }
+
+        @Override
+        protected void onPostExecute(Patient taskPatient) {
+            patient = taskPatient;
+        Fragment fragment = new ProfileFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.PARSE_FIRSTNAME_KEY, patient.getFirstName());
+        bundle.putString(Constants.PARSE_LASTNAME_KEY, patient.getLastName());
+        bundle.putString(Constants.PARSE_PATIENTID_KEY, patient.getPatientID());
+        bundle.putString(Constants.PARSE_BIRTHDAY_KEY, patient.getBirthday());
+        bundle.putString(Constants.PARSE_ADDRESS_KEY, patient.getAddress());
+        bundle.putString(Constants.PARSE_GENDER_KEY, patient.getGender());
+        bundle.putString(Constants.PARSE_CONTACTNUM_KEY, patient.getContactNo());
+        fragment.setArguments(bundle);
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment).commit();
+        }
     }
 }

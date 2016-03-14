@@ -62,15 +62,10 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         return convertView;
     }
 
-    public static class TransactionHolder implements View.OnClickListener{
+    public static class TransactionHolder{
         private TextView tvDate;
         private TextView tvMonth;
         private TextView tvHospitalName;
         private TextView tvDoctorName;
-
-        @Override
-        public void onClick(View v) {
-            Transaction transaction = transactions.get(position);
-        }
     }
 }

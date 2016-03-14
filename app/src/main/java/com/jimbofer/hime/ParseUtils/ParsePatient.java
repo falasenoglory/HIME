@@ -43,7 +43,7 @@ public class ParsePatient {
 
         Patient pat = null;
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Patient");
-        query.whereEqualTo("objectId", objID);
+        query.whereEqualTo("Username", objID);
         try {
             list = query.find();
         } catch (ParseException e) {
