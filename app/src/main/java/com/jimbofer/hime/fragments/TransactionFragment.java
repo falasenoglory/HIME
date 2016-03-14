@@ -7,9 +7,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.jimbofer.hime.ParseUtils.ParseTransaction;
 import com.jimbofer.hime.R;
+import com.jimbofer.hime.adapter.TransactionAdapter;
 import com.jimbofer.hime.model.Transaction;
 
 import java.util.ArrayList;
@@ -45,9 +47,9 @@ public class TransactionFragment extends Fragment{
 
         @Override
         protected void onPostExecute(List<Transaction> parseTransactions) {
-//            ListView listView = (ListView) mView.findViewById(R.id.listView);
-//            TransactionAdapter transactionAdapter = new TransactionAdapter(mView.getContext(), R.layout.cardview_transaction, parseTransactions);
-//            listView.setAdapter(transactionAdapter);
+            ListView listView = (ListView) mView.findViewById(R.id.listView);
+            TransactionAdapter transactionAdapter = new TransactionAdapter(mView.getContext(), R.layout.cardview_transaction, parseTransactions);
+            listView.setAdapter(transactionAdapter);
         }
     }
 
