@@ -71,7 +71,7 @@ public class ParseTransaction {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
             parseTransaction.add(trans);
         }
         return parseTransaction;
@@ -88,7 +88,7 @@ public class ParseTransaction {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
             parseTransaction.add(trans);
         }
         return Integer.parseInt(parseTransaction.get(parseTransaction.size() - 1).getTransactionID());
@@ -108,7 +108,7 @@ public class ParseTransaction {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-           trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+           trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
 
         }
         return trans;
@@ -121,7 +121,7 @@ public class ParseTransaction {
         storyActivity.put("patientID", patientID);
         storyActivity.put("insuranceID", insuranceID);
         storyActivity.put("hospitalID", hospitalID);
-        storyActivity.put("DoctorID", doctorID);
+        storyActivity.put("doctorID", doctorID);
         storyActivity.put("transactionType", transtype);
         storyActivity.put("transactionDescription", transdesc);
         storyActivity.put("transactionDate", transdate);
@@ -183,7 +183,7 @@ public class ParseTransaction {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
             parseTransaction.add(trans);
         }
         return parseTransaction;
