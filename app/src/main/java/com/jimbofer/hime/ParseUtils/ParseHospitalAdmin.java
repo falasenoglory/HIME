@@ -42,7 +42,7 @@ public class ParseHospitalAdmin {
 
         HospitalAdmin hosp = null;
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
-        query.whereEqualTo("objectId", objID);
+        query.whereEqualTo("hospitalID", objID);
         try {
             list = query.find();
         } catch (ParseException e) {

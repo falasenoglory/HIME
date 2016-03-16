@@ -42,7 +42,7 @@ public class ParseDoctor {
 
         Doctor doct = null;
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Doctor");
-        query.whereEqualTo("objectId", objID);
+        query.whereEqualTo("doctorID", objID);
         try {
             list = query.find();
         } catch (ParseException e) {
