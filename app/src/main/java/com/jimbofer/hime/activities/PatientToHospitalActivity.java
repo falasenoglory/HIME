@@ -15,6 +15,7 @@ public class PatientToHospitalActivity extends AppCompatActivity {
 
     private Button mButton;
     private Button mButton2;
+    public static String hospid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,8 @@ public class PatientToHospitalActivity extends AppCompatActivity {
 
         mButton = (Button) findViewById(R.id.firstButton);
         mButton2 = (Button) findViewById(R.id.secondButton);
+        Intent i = getIntent();
+        hospid = i.getStringExtra("HospitalID");
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +39,7 @@ public class PatientToHospitalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PTHToHospital.class);
+                intent.putExtra("HospitalID",hospid);
                 startActivity(intent);
             }
         });
