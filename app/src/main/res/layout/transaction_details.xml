@@ -79,7 +79,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/patientBirthday"
+                android:id="@+id/hospitalID2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hospital_name_transaction"
@@ -115,7 +115,7 @@
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/address"
+                android:text="@string/name_doctor"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold" />
 
@@ -204,7 +204,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/patientContactNumber"
+                android:id="@+id/transactionDate2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/transaction_date"

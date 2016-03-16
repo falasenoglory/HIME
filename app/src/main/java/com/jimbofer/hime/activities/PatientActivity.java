@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.jimbofer.hime.ParseUtils.ParsePatient;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.constants.Constants;
+import com.jimbofer.hime.fragments.HospitalFragment;
 import com.jimbofer.hime.fragments.ProfileFragment;
 import com.jimbofer.hime.fragments.TransactionFragment;
 import com.jimbofer.hime.model.Patient;
@@ -41,19 +42,6 @@ public class PatientActivity extends AppCompatActivity
 
         navigationView.setCheckedItem(R.id.nav_account);
         new PerformNavDrawTask().execute();
-//        Fragment fragment = new ProfileFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putString(Constants.PARSE_FIRSTNAME_KEY, patient.getFirstName());
-//        bundle.putString(Constants.PARSE_LASTNAME_KEY, patient.getLastName());
-//        bundle.putString(Constants.PARSE_PATIENTID_KEY, patient.getPatientID());
-//        bundle.putString(Constants.PARSE_BIRTHDAY_KEY, patient.getBirthday());
-//        bundle.putString(Constants.PARSE_ADDRESS_KEY, patient.getAddress());
-//        bundle.putString(Constants.PARSE_GENDER_KEY, patient.getGender());
-//        bundle.putString(Constants.PARSE_CONTACTNUM_KEY, patient.getContactNo());
-//        fragment.setArguments(bundle);
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.fragmentContainer, fragment).commit();
     }
 
     @Override
@@ -105,14 +93,13 @@ public class PatientActivity extends AppCompatActivity
             bundle.putString(Constants.PARSE_CONTACTNUM_KEY, patient.getContactNo());
             fragment.setArguments(bundle);
             Toast.makeText(getApplicationContext(), "Kayat", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_history) {
-            //do something..
         } else if (id == R.id.nav_transaction) {
             fragment = new TransactionFragment();
             Bundle bundle = new Bundle();
             bundle.putString(Constants.PARSE_PATIENTID_KEY, patient.getPatientID());
             fragment.setArguments(bundle);
         } else if (id == R.id.nav_hospital) {
+            fragment = new HospitalFragment();
             //do something
         } else if (id == R.id.nav_insurance) {
             //do something..

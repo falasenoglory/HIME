@@ -33,7 +33,7 @@
     <string name="title_activity_doctor_profile">DoctorProfile</string>
     <string name="pID">Patient ID:</string>
     <string name="patient_id">Patient ID</string>
-    <string name="hospital">Hospital</string>
+    <string name="hospital">Hospital Name:</string>
     <string name="hospital_name_transaction">Hospital...</string>
     <string name="doctor_name_transaction">Doctor Name</string>
     <string name="transaction_description">Transaction...</string>
@@ -42,6 +42,15 @@
     <string name="date_transaction">Transaction Date:</string>
     <string name="transaction_price">Php. 100.00</string>
     <string name="price_transactiom">Transaction Price:</string>
+    <string name="name_doctor">Doctor Name:</string>
+    <string name="title_activity_patient_to_hospital">PatientToHospitalActivity</string>
+    <string name="hospital_details">Hospital Details</string>
+    <string name="set_appointment">Set Appointment</string>
+    <string name="ask_referral">Ask Referral</string>
+    <string name="visit_doctor">VISIT DOCTOR</string>
+    <string name="visit_hospital">VISIT HOSPITAL</string>
+    <string name="patient_hospital_doctor">PHToDoctor</string>
+    <string name="patient_hospital">PTHToHospital</string>
     <string name="title_activity_appointment_status">AppointmentStatus</string>
 </resources>
 

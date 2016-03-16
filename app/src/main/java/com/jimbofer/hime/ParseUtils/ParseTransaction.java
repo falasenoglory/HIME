@@ -2,12 +2,15 @@ package com.jimbofer.hime.ParseUtils;
 
 import android.util.Log;
 
+import com.jimbofer.hime.model.Doctor;
+import com.jimbofer.hime.model.HospitalAdmin;
 import com.jimbofer.hime.model.Transaction;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
@@ -60,7 +63,7 @@ public class ParseTransaction {
 //
 //    }
 
-    static public List<Transaction> getTransactions(){
+    static public List<Transaction> getTransactions() {
         List<ParseObject> list = new ArrayList<>();
         List<Transaction> parseTransaction = new ArrayList<>();
 
@@ -71,7 +74,7 @@ public class ParseTransaction {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
             parseTransaction.add(trans);
         }
         return parseTransaction;
@@ -88,7 +91,7 @@ public class ParseTransaction {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+            Transaction trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
             parseTransaction.add(trans);
         }
         return Integer.parseInt(parseTransaction.get(parseTransaction.size() - 1).getTransactionID());
@@ -101,14 +104,16 @@ public class ParseTransaction {
 
         Transaction trans = null;
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Transaction");
-        query.whereEqualTo("objectId", objID);
+        query.whereEqualTo("transactionID", objID);
         try {
             list = query.find();
         } catch (ParseException e) {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-           trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
+//            Doctor doctor = ParseDoctor.getCertainDoctorDetails(obj.getString("DoctorID"));
+//            HospitalAdmin hospital = ParseHospitalAdmin.getCertainHospitalAdminDetails(obj.getString("hospitalID"));
+            trans = new Transaction(obj.getString("objectId"), obj.getString("transactionID"), obj.getString("patientID"), obj.getString("hospitalID"), obj.getString("doctorID"), obj.getString("DoctorID"), obj.getString("transactionType"), obj.getString("transactionDescription"), obj.getString("transactionDate"), obj.getString("transactionPrice"));
 
         }
         return trans;
@@ -121,7 +126,7 @@ public class ParseTransaction {
         storyActivity.put("patientID", patientID);
         storyActivity.put("insuranceID", insuranceID);
         storyActivity.put("hospitalID", hospitalID);
-        storyActivity.put("doctorID", doctorID);
+        storyActivity.put("DoctorID", doctorID);
         storyActivity.put("transactionType", transtype);
         storyActivity.put("transactionDescription", transdesc);
         storyActivity.put("transactionDate", transdate);
@@ -166,12 +171,14 @@ public class ParseTransaction {
             }
         });
     }
-    public void editTransaction(String objID,String patientID,String insuranceID,String hospitalID,String doctorID,String transtype,String transdesc,String transdate,String transprice){
+
+    public void editTransaction(String objID, String patientID, String insuranceID, String hospitalID, String doctorID, String transtype, String transdesc, String transdate, String transprice) {
         deleteTransaction(objID);
         addTransaction(patientID, insuranceID, hospitalID, doctorID, transtype, transdesc, transdate, transprice);
 
     }
-    public static List<Transaction> getAllTransactionOfPatient(String patientID){
+
+    public static List<Transaction> getAllTransactionOfPatient(String patientID) {
         List<ParseObject> list = new ArrayList<>();
         List<Transaction> parseTransaction = new ArrayList<>();
 
@@ -188,5 +195,4 @@ public class ParseTransaction {
         }
         return parseTransaction;
     }
-
 }

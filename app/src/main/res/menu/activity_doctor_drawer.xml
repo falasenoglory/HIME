@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@mipmap/ic_home"
-            android:title="@string/string_home" />
-        <item
-            android:id="@+id/nav_account"
-            android:icon="@mipmap/ic_account"
-            android:title="@string/string_account" />
-        <item
-            android:id="@+id/nav_history"
-            android:icon="@mipmap/ic_history"
-            android:title="@string/string_history" />
-        <item
-            android:id="@+id/nav_transaction"
-            android:icon="@mipmap/ic_transaction"
-            android:title="@string/string_transactions" />
-        <item
-            android:id="@+id/nav_hospital"
-            android:icon="@mipmap/ic_hospital"
-            android:title="@string/string_hospital" />
-    </group>
-
+    <item
+        android:id="@+id/nav_hospital"
+        android:icon="@mipmap/ic_hospital"
+        android:title="@string/hospital_details" />
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@mipmap/ic_home"
+        android:title="@string/set_appointment" />
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@mipmap/ic_account"
+        android:title="@string/ask_referral" />
 </menu>
