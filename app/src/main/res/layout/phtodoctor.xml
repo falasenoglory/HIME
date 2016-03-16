@@ -28,8 +28,6 @@
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:text="@string/ask_referral" />
 
-    <fragment
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <include layout="@layout/phtodoctor_content"/>
+
 </LinearLayout>

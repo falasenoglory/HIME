@@ -16,6 +16,7 @@ import com.jimbofer.hime.ParseUtils.ParseDoctor;
 import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.ParseUtils.ParseTransaction;
 import com.jimbofer.hime.R;
+import com.jimbofer.hime.activities.PatientToHospitalActivity;
 import com.jimbofer.hime.activities.TransactionDetails;
 import com.jimbofer.hime.adapter.TransactionAdapter;
 import com.jimbofer.hime.adapters.HospitalFragmentAdapter;
@@ -72,14 +73,14 @@ public class HospitalFragment extends Fragment {
         protected void onPostExecute(Void params) {
             ListView listView = (ListView) mView.findViewById(R.id.listView);
             HospitalFragmentAdapter hospitalFragmentAdapter = new HospitalFragmentAdapter(mView.getContext(), R.layout.cardview_transaction, doctors);
-//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent intent = new Intent(context, TransactionDetails.class);
-//                    intent.putExtra("HospitalID", doctors.get(position).getHospitalId());
-//                    context.startActivity(intent);
-//                }
-//            });
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(context, PatientToHospitalActivity.class);
+                    intent.putExtra("HospitalID", doctors.get(position).getHospitalId());
+                    context.startActivity(intent);
+                }
+            });
             listView.setAdapter(hospitalFragmentAdapter);
         }
     }
