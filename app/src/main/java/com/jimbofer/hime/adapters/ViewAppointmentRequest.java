@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.parse.ParseQuery;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,22 +72,33 @@ public class ViewAppointmentRequest extends ArrayAdapter<Appointments> {
             viewHolder.txtMonth.setText(month);
             viewHolder.txtStatus.setText(appt.getStatus());
             String patientID = appt.getAppointmentPatientID();
+            List<ParseObject> list = new ArrayList<>();
             ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Patient");
             query.whereEqualTo("PatientID", patientID);
-            query.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> list, ParseException e) {
-                    if (e == null) {
+//            query.findInBackground(new FindCallback<ParseObject>() {
+//                @Override
+//                public void done(List<ParseObject> list, ParseException e) {
+//                    if (e == null) {
+//
+//                        for (ParseObject obj : list) {
+//                            viewHolder.txtName.setText(obj.getString("firstName") + "," + obj.getString("lastName"));
+//                        }
+//
+//
+//                    } else {
+//                    }
+//                }
+//            });
 
-                        for (ParseObject obj : list) {
-                            viewHolder.txtName.setText(obj.getString("firstName") + "," + obj.getString("lastName"));
-                        }
-
-
-                    } else {
-                    }
-                }
-            });
+            try {
+                list = query.find();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            for (ParseObject obj : list) {
+                viewHolder.txtName.setText(obj.getString("firstName") + "," + obj.getString("lastName"));
+                Log.d("chan", obj.getString("firstName") + "," + obj.getString("lastName"));
+            }
 
         }
         return convertView;

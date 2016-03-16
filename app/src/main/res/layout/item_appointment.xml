@@ -66,11 +66,6 @@
             android:layout_weight="10"
             android:orientation="vertical">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Approve"
-                android:id="@+id/checkBox" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

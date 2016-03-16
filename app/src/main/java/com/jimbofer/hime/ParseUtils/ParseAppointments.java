@@ -70,7 +70,7 @@ public class ParseAppointments {
         return Integer.parseInt(parseAppointment.get(parseAppointment.size() - 1).getAppointmentID());
 
     }
-    public void addAppointment(String appID,String appDate,String patid,String docid,String status,String apptTime){
+    public static void addAppointment(String appID,String appDate,String apptTime,String status,String patid,String docid){
         int apid = ListSize()+1;
         ParseObject storyActivity = new ParseObject("Appointment");
         storyActivity.put("AppointmentID", apid);
@@ -91,7 +91,28 @@ public class ParseAppointments {
             }
         });
     }
-    public void deleteAppointment(String objID){
+    public static void addAppointment2(String appID,String appDate,String apptTime,String status,String patid,String docid){
+        int apid = ListSize()+1;
+        ParseObject storyActivity = new ParseObject("Appointment");
+        storyActivity.put("AppointmentID", appID);
+        storyActivity.put("AppointmentDate",appDate);
+        storyActivity.put("PatientID",patid);
+        storyActivity.put("DoctorID",docid);
+        storyActivity.put("Status",status);
+        storyActivity.put("AppointmentTime",apptTime);
+
+        storyActivity.saveInBackground(new SaveCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    // your object is successfully created.
+                } else {
+                    //error occurred
+                    Log.d("Error", "Nothing added , Exception " + e);
+                }
+            }
+        });
+    }
+    public static void deleteAppointment(String objID){
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Appointment");
         query2.whereEqualTo("objectId", objID);
         query2.findInBackground(new FindCallback<ParseObject>() {

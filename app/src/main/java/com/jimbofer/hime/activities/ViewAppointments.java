@@ -22,14 +22,16 @@ public class ViewAppointments extends AppCompatActivity {
         setContentView(R.layout.activity_view_patients);
 
         Intent intent= getIntent();
-
+        String username = intent.getStringExtra("username");
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
         mListViewFragment = ListViewFragmentAppointment.newInstance();
-
+        Bundle bundle = new Bundle();
+        bundle.putString("doctorUsername", username);
+        mListViewFragment.setArguments(bundle);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentContainer, mListViewFragment)

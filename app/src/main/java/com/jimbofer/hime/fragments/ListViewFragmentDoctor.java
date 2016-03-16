@@ -90,6 +90,7 @@ public class ListViewFragmentDoctor extends Fragment implements AdapterView.OnIt
 
             Intent intent = new Intent(getActivity(), ViewAppointments.class);
             username = getArguments().getString("doctorUsername");
+            Log.d("Username",username);
             intent.putExtra("username",username);
             startActivity(intent);
 
