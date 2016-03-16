@@ -54,9 +54,11 @@ public class ListViewFragmentAppointment extends Fragment implements AdapterView
         mListView = (ListView) view.findViewById(R.id.listViewApp);
 
         Lappointment.clear();
-
+        String username=null;
         final String[] doctorID = {null};
-        String username = getArguments().getString("doctorUsername");
+        Log.d("Chan","Username: "+getArguments().getString("doctorUsername"));
+        username = getArguments().getString("doctorUsername");
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Doctor");
         query.whereEqualTo("Doctor", username);
         query.findInBackground(new FindCallback<ParseObject>() {
