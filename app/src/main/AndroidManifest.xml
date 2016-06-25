@@ -65,14 +65,6 @@
             android:name=".activities.AppointmentStatus"
             android:label="@string/title_activity_appointment_status"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".activities.PHToDoctor"
-            android:label="@string/patient_hospital_doctor"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.PTHToHospital"
-            android:label="@string/patient_hospital"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

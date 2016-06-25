@@ -35,14 +35,14 @@ public class ParseHospitalAdmin {
     }
         return parseHospital;
     }
-    public static HospitalAdmin getCertainHospitalAdminDetails(String objID){
+    public static HospitalAdmin getCertainHospitalAdminDetails(String hospitalID){
 
 
         List<ParseObject> list = new ArrayList<>();
 
         HospitalAdmin hosp = null;
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
-        query.whereEqualTo("hospitalID", objID);
+        query.whereEqualTo("hospitalID", hospitalID);
         try {
             list = query.find();
         } catch (ParseException e) {

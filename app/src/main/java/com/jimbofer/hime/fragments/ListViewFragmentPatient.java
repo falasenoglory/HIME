@@ -63,7 +63,7 @@ public class ListViewFragmentPatient extends Fragment implements AdapterView.OnI
                                     ParseObject obj;
                                     for (int i = 0; i < markers.size(); i++) {
                                         obj = markers.get(i);
-                                        pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
+                                        pat = new Patient(obj.getString("objectId"), obj.getString("Username"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("contactNo"), obj.getString("gender"), obj.getString("medicalHistory"), obj.getString("patientRemainingInsuranceBalance"));
                                         Log.d("shan", "pat: " + pat.toString());
                                         Lpatient.add(pat);
                                         Log.d("shan", Lpatient.get(Lpatient.size() - 1).getFirstName());

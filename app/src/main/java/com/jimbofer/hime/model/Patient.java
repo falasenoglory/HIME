@@ -5,6 +5,7 @@ package com.jimbofer.hime.model;
  */
 public class Patient {
     private String ObjectID;
+    private String username;
     private String insuranceID;
     private String patientID;
     private String firstName;
@@ -17,8 +18,9 @@ public class Patient {
     private String patientRemainingInsuranceBalance;
     private String contactNo;
 
-    public Patient(String objectID, String insuranceID, String patientID, String firstName, String lastName, String middleInitial, String address, String birthday, String medicalHistory, String gender, String patientRemainingInsuranceBalance, String contactNo) {
+    public Patient(String objectID, String username, String insuranceID, String patientID, String firstName, String lastName, String middleInitial, String address, String birthday, String contactNo, String gender, String medicalHistory, String patientRemainingInsuranceBalance) {
         ObjectID = objectID;
+        this.username = username;
         this.insuranceID = insuranceID;
         this.patientID = patientID;
         this.firstName = firstName;

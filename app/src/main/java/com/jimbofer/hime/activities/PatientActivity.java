@@ -92,7 +92,6 @@ public class PatientActivity extends AppCompatActivity
             bundle.putString(Constants.PARSE_GENDER_KEY, patient.getGender());
             bundle.putString(Constants.PARSE_CONTACTNUM_KEY, patient.getContactNo());
             fragment.setArguments(bundle);
-            Toast.makeText(getApplicationContext(), "Kayat", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_transaction) {
             fragment = new TransactionFragment();
             Bundle bundle = new Bundle();

@@ -19,7 +19,7 @@ public class ParseAppointments {
 
     public static Appointments appt;
 
-    public static List<Appointments> getAllAppointments(){
+    public static List<Appointments> getAllAppointments() {
         List<ParseObject> list = new ArrayList<>();
         List<Appointments> parseAppointment = new ArrayList<>();
 
@@ -30,12 +30,13 @@ public class ParseAppointments {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Appointments appt = new Appointments(obj.getString("AppointmentID"),obj.getString("AppointmentDate"),obj.getString("PatientID"),obj.getString("DoctorID"),obj.getString("AppointmentTime"),obj.getString("Status"));
+            Appointments appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
             parseAppointment.add(appt);
         }
         return parseAppointment;
     }
-    public static Appointments getCertainAppointmentDetails(String objID){
+
+    public static Appointments getCertainAppointmentDetails(String objID) {
 
         List<ParseObject> list = new ArrayList<>();
 
@@ -48,12 +49,13 @@ public class ParseAppointments {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            appt = new Appointments(obj.getString("AppointmentID"),obj.getString("AppointmentDate"),obj.getString("PatientID"),obj.getString("DoctorID"),obj.getString("AppointmentTime"),obj.getString("Status"));
+            appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
 
         }
         return appt;
     }
-    public static int ListSize(){
+
+    public static int ListSize() {
         List<ParseObject> list = new ArrayList<>();
         List<Appointments> parseAppointment = new ArrayList<>();
 
@@ -64,21 +66,22 @@ public class ParseAppointments {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Appointments appt = new Appointments(obj.getString("AppointmentID"),obj.getString("AppointmentDate"),obj.getString("PatientID"),obj.getString("DoctorID"),obj.getString("AppointmentTime"),obj.getString("Status"));
+            Appointments appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
             parseAppointment.add(appt);
         }
         return Integer.parseInt(parseAppointment.get(parseAppointment.size() - 1).getAppointmentID());
 
     }
-    public static void addAppointment(String appID,String appDate,String apptTime,String status,String patid,String docid){
-        int apid = ListSize()+1;
+
+    public static void addAppointment(String appID, String appDate, String apptTime, String status, String patid, String docid) {
+        int apid = ListSize() + 1;
         ParseObject storyActivity = new ParseObject("Appointment");
         storyActivity.put("AppointmentID", apid);
-        storyActivity.put("AppointmentDate",appDate);
-        storyActivity.put("PatientID",patid);
-        storyActivity.put("DoctorID",docid);
-        storyActivity.put("Status",status);
-        storyActivity.put("AppointmentTime",apptTime);
+        storyActivity.put("AppointmentDate", appDate);
+        storyActivity.put("PatientID", patid);
+        storyActivity.put("DoctorID", docid);
+        storyActivity.put("Status", status);
+        storyActivity.put("AppointmentTime", apptTime);
 
         storyActivity.saveInBackground(new SaveCallback() {
             public void done(ParseException e) {
@@ -91,16 +94,23 @@ public class ParseAppointments {
             }
         });
     }
-    public static void addAppointment2(String appID,String appDate,String apptTime,String status,String patid,String docid){
-        int apid = ListSize()+1;
+
+    public static void addAppointment2(String appDate, String apptTime, String docid, String patid) {
+        int apid = ListSize() + 1;
         ParseObject storyActivity = new ParseObject("Appointment");
-        storyActivity.put("AppointmentID", appID);
-        storyActivity.put("AppointmentDate",appDate);
-        storyActivity.put("PatientID",patid);
-        storyActivity.put("DoctorID",docid);
-        storyActivity.put("Status",status);
-        storyActivity.put("AppointmentTime",apptTime);
+        storyActivity.put("AppointmentDate", appDate);
+        storyActivity.put("AppointmentID", ""+apid);
+        storyActivity.put("AppointmentTime", apptTime);
+        storyActivity.put("DoctorID", docid);
+        storyActivity.put("PatientID", patid);
+        storyActivity.put("Status", false);
+        storyActivity.put("Answered", false);
 
+        try {
+            storyActivity.save();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         storyActivity.saveInBackground(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
@@ -112,7 +122,8 @@ public class ParseAppointments {
             }
         });
     }
-    public static void deleteAppointment(String objID){
+
+    public static void deleteAppointment(String objID) {
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Appointment");
         query2.whereEqualTo("objectId", objID);
         query2.findInBackground(new FindCallback<ParseObject>() {

@@ -1,48 +1,127 @@
 package com.jimbofer.hime.activities;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.jimbofer.hime.ParseUtils.ParseDoctor;
+import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.R;
+import com.jimbofer.hime.model.Doctor;
+import com.jimbofer.hime.model.HospitalAdmin;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PatientToHospitalActivity extends AppCompatActivity {
 
-    private Button mButton;
-    private Button mButton2;
     public static String hospid;
+    public static String longi, lati;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_to_hospital);
 
-        mButton = (Button) findViewById(R.id.firstButton);
-        mButton2 = (Button) findViewById(R.id.secondButton);
         Intent i = getIntent();
         hospid = i.getStringExtra("HospitalID");
-
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PHToDoctor.class);
-                startActivity(intent);
-            }
-        });
-
-        mButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PTHToHospital.class);
-                intent.putExtra("HospitalID",hospid);
-                startActivity(intent);
-            }
-        });
+        new FetchHospital().execute();
     }
 
+    public void cardView1(View view) {
+        Log.d("Hello", "Hello");
+    }
+
+    public void cardView2(View view) {
+        Log.d("Hello2", "Hello2");
+    }
+
+    public void cardView3(View view) {
+        List<ParseObject> list = new ArrayList<>();
+
+        HospitalAdmin hosp = null;
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Hospital");
+        query.whereEqualTo("hospitalID", hospid);
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            hosp = new HospitalAdmin(obj.getString("objectId"), obj.getString("hospitalID"), obj.getString("hospitalName"), obj.getString("hospitalAddress"), obj.getString("hospitalHMOContactNumber"), obj.getString("longitude"), obj.getString("latitude"));
+
+        }
+        if (hosp != null) {
+            longi = hosp.getLongitude();
+            lati = hosp.getLatitude();
+        }
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + longi + "," + lati);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+
+    public class FetchHospital extends AsyncTask<Void, Void, List<Doctor>> {
+        private HospitalAdmin hospital;
+        private TextView mDoctorName;
+        private TextView mSpecialty;
+        private TextView mDoctorNumber;
+        private TextView mDentistName;
+        private TextView mDentistNumber;
+        private TextView mHospitalName;
+        private TextView mHospitalAddress;
+        private TextView mContactNumber;
+
+        @Override
+        protected void onPreExecute() {
+            mDoctorName = (TextView) findViewById(R.id.doctorName);
+            mSpecialty = (TextView) findViewById(R.id.specialty);
+            mDoctorNumber = (TextView) findViewById(R.id.doctorNumber);
+            mDentistName = (TextView) findViewById(R.id.dentistName);
+            mDentistNumber = (TextView) findViewById(R.id.dentistNumber);
+            mHospitalName = (TextView) findViewById(R.id.hospitalName);
+            mHospitalAddress = (TextView) findViewById(R.id.hospitalAddress);
+            mContactNumber = (TextView) findViewById(R.id.contactNumber);
+        }
+
+        @Override
+        protected List<Doctor> doInBackground(Void... params) {
+            hospital = ParseHospitalAdmin.getCertainHospitalAdminDetails(hospid);
+            return ParseDoctor.getDoctorsInHospital(hospid);
+        }
+
+        @Override
+        protected void onPostExecute(List<Doctor> doctors) {
+            Doctor doctor = doctors.get(0);
+            mDoctorName.setText("Dr. " + doctor.getFirstname() + " " + doctor.getLastname());
+            mSpecialty.setText(doctor.getSpecialization());
+            mDoctorNumber.setText(doctor.getContactNo());
+            if(doctors.size() == 2) {
+                doctor = doctors.get(1);
+                mDentistName.setText("Dr. " + doctor.getFirstname() + " " + doctor.getLastname());
+                mDentistNumber.setText(doctor.getContactNo());
+            }else{
+                mDentistName.setText("NO DENTIST");
+                mDentistNumber.setText("");
+            }
+            mHospitalName.setText(hospital.getHospitalName());
+            mHospitalAddress.setText("View Hospital In Google Maps");
+            mContactNumber.setText(hospital.getHospitalHMOContactNumber());
+        }
+    }
 }

@@ -6,6 +6,7 @@ package com.jimbofer.hime.model;
 public class Doctor {
     private String ObjectID;
     private String DoctorId;
+    private String username;
     private String insuranceId;
     private String HospitalId;
     private String Firstname;
@@ -15,9 +16,10 @@ public class Doctor {
     private String Gender;
     private String transactionPrice;
 
-    public Doctor(String objectID, String doctorId, String insuranceId, String hospitalId, String firstname, String lastname, String specialization, String contactNo, String gender, String transactionPrice) {
+    public Doctor(String objectID, String username, String doctorId, String hospitalId, String doctor, String contactNo, String firstname, String lastname, String specialization, String gender, String insuranceId, String transactionPrice) {
         ObjectID = objectID;
         DoctorId = doctorId;
+        this.username = username;
         this.insuranceId = insuranceId;
         HospitalId = hospitalId;
         Firstname = firstname;

@@ -14,19 +14,12 @@ import android.widget.ListView;
 
 import com.jimbofer.hime.ParseUtils.ParseDoctor;
 import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
-import com.jimbofer.hime.ParseUtils.ParseTransaction;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.activities.PatientToHospitalActivity;
-import com.jimbofer.hime.activities.TransactionDetails;
-import com.jimbofer.hime.adapter.TransactionAdapter;
 import com.jimbofer.hime.adapters.HospitalFragmentAdapter;
-import com.jimbofer.hime.constants.Constants;
 import com.jimbofer.hime.model.Doctor;
 import com.jimbofer.hime.model.HospitalAdmin;
-import com.jimbofer.hime.model.Transaction;
-import com.jimbofer.hime.model.TransactionCardView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,29 +48,22 @@ public class HospitalFragment extends Fragment {
     }
 
 
-    public static class FetchData extends AsyncTask<Void, Void, Void> {
-        HospitalAdmin hospital;
-        List<Doctor> doctors;
+    public static class FetchData extends AsyncTask<Void, Void, List<HospitalAdmin>> {
 
         @Override
-        public Void doInBackground(Void... params) {
-            doctors = ParseDoctor.getAllDoctor();
-            for (int x = 0; x < doctors.size(); x++) {
-                hospital = ParseHospitalAdmin.getCertainHospitalAdminDetails(doctors.get(x).getHospitalId());
-                doctors.get(x).setHospitalId(hospital.getHospitalName());
-            }
-            return null;
+        public List<HospitalAdmin> doInBackground(Void... params) {
+            return ParseHospitalAdmin.getAllHospitalAdmin();
         }
 
         @Override
-        protected void onPostExecute(Void params) {
+        protected void onPostExecute(final List<HospitalAdmin> hospitals) {
             ListView listView = (ListView) mView.findViewById(R.id.listView);
-            HospitalFragmentAdapter hospitalFragmentAdapter = new HospitalFragmentAdapter(mView.getContext(), R.layout.cardview_transaction, doctors);
+            HospitalFragmentAdapter hospitalFragmentAdapter = new HospitalFragmentAdapter(mView.getContext(), R.layout.cardview_transaction, hospitals);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(context, PatientToHospitalActivity.class);
-                    intent.putExtra("HospitalID", doctors.get(position).getHospitalId());
+                    intent.putExtra("HospitalID", hospitals.get(position).getHospitalId());
                     context.startActivity(intent);
                 }
             });

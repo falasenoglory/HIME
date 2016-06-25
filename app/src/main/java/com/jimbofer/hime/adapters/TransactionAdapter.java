@@ -1,4 +1,4 @@
-package com.jimbofer.hime.adapter;
+package com.jimbofer.hime.adapters;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

@@ -31,7 +31,7 @@ public class ParsePatient {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-           Patient pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
+            Patient pat = new Patient(obj.getString("objectId"), obj.getString("Username"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("contactNo"), obj.getString("gender"), obj.getString("medicalHistory"), obj.getString("patientRemainingInsuranceBalance"));
             parsePatient.add(pat);
         }
         return parsePatient;
@@ -50,8 +50,7 @@ public class ParsePatient {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
-
+            pat = new Patient(obj.getString("objectId"), obj.getString("Username"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("contactNo"), obj.getString("gender"), obj.getString("medicalHistory"), obj.getString("patientRemainingInsuranceBalance"));
         }
         return pat;
     }
@@ -67,25 +66,26 @@ public class ParsePatient {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Patient pat = new Patient(obj.getString("objectId"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("medicalHistory"), obj.getString("gender"), obj.getString("patientRemainingInsuranceBalance"), obj.getString("contactNo"));
-            parsePatient.add(pat);
+            Patient pat = new Patient(obj.getString("objectId"), obj.getString("Username"), obj.getString("Insurance_ID"), obj.getString("PatientID"), obj.getString("firstName"), obj.getString("lastName"), obj.getString("MiddleInitial"), obj.getString("address"), obj.getString("birthday"), obj.getString("contactNo"), obj.getString("gender"), obj.getString("medicalHistory"), obj.getString("patientRemainingInsuranceBalance"));parsePatient.add(pat);
         }
         return Integer.parseInt(parsePatient.get(parsePatient.size() - 1).getPatientID());
     }
 
-    public void addPatient(String insuranceID, String fname, String lname, String address, String bday, String medhis, String gender, String insbal, String cno) {
+    public void addPatient(String username, String insuranceID, String patientID, String firstName, String lastName, String middleInitial, String address, String birthday, String contactNo, String gender, String medicalHistory, String patientRemainingInsuranceBalance) {
         int PatientID = ListSize() + 1;
         ParseObject storyActivity = new ParseObject("Patient");
-        storyActivity.put("PatientID", PatientID);
+        storyActivity.put("Username", username);
         storyActivity.put("Insurance_ID", insuranceID);
-        storyActivity.put("firstName", fname);
-        storyActivity.put("lastName", lname);
+        storyActivity.put("PatientID", patientID);
+        storyActivity.put("firstName", firstName);
+        storyActivity.put("lastName", lastName);
+        storyActivity.put("MiddleInitial", middleInitial);
         storyActivity.put("address", address);
-        storyActivity.put("birthday", bday);
-        storyActivity.put("medicalHistory", medhis);
+        storyActivity.put("birthday", birthday);
+        storyActivity.put("coontactNo", contactNo);
         storyActivity.put("gender", gender);
-        storyActivity.put("patientRemainingInsuranceBalance", insbal);
-        storyActivity.put("contactNo", cno);
+        storyActivity.put("medicalHistory", medicalHistory);
+        storyActivity.put("patientRemainingInsuranceBalance", patientRemainingInsuranceBalance);
 
         storyActivity.saveInBackground(new SaveCallback() {
             public void done(ParseException e) {
@@ -127,9 +127,10 @@ public class ParsePatient {
             }
         });
     }
-    public void editPatient(String objID,String insuranceID, String fname, String lname, String address, String bday, String medhis, String gender, String insbal, String cno){
-        deletePatient(objID);
-        addPatient(insuranceID,fname,lname,address,bday,medhis,gender,insbal,cno);
-    }
+
+//    public void editPatient(String objID, String insuranceID, String fname, String lname, String address, String bday, String medhis, String gender, String insbal, String cno) {
+//        deletePatient(objID);
+//        addPatient(insuranceID, fname, lname, address, bday, medhis, gender, insbal, cno);
+//    }
 
 }

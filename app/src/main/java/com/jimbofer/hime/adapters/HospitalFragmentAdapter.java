@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.model.Doctor;
+import com.jimbofer.hime.model.HospitalAdmin;
 import com.jimbofer.hime.model.TransactionCardView;
 
 import java.util.List;
@@ -16,18 +17,18 @@ import java.util.List;
 /**
  * Created by Eugene Boholst on 3/16/2016.
  */
-public class HospitalFragmentAdapter extends ArrayAdapter<Doctor> {
+public class HospitalFragmentAdapter extends ArrayAdapter<HospitalAdmin> {
 
     private Context mContext;
     private int mLayoutId;
-    private static List<Doctor> doctors;
+    private static List<HospitalAdmin> hospitals;
     private static TransactionHolder transactionHolder;
 
-    public HospitalFragmentAdapter(Context context, int resource, List<Doctor> objects) {
-        super(context, resource, objects);
+    public HospitalFragmentAdapter(Context context, int resource, List<HospitalAdmin> hospitals) {
+        super(context, resource, hospitals);
         mContext = context;
         mLayoutId = resource;
-        doctors = objects;
+        this.hospitals = hospitals;
     }
 
     @Override
@@ -44,11 +45,11 @@ public class HospitalFragmentAdapter extends ArrayAdapter<Doctor> {
         } else {
             transactionHolder = (TransactionHolder) convertView.getTag();
         }
-        if (doctors.get(position) != null) {
+        if (hospitals.get(position) != null) {
             transactionHolder.tvDate.setText("");
             transactionHolder.tvMonth.setText("");
-            transactionHolder.tvHospitalName.setText(doctors.get(position).getHospitalId());
-            transactionHolder.tvDoctorName.setText("Dr. " + doctors.get(position).getFirstname() + " " + doctors.get(position).getLastname() + ", " + doctors.get(position).getSpecialization());
+            transactionHolder.tvHospitalName.setText(hospitals.get(position).getHospitalName());
+            transactionHolder.tvDoctorName.setText(hospitals.get(position).getHospitalHMOContactNumber());
         }
         return convertView;
     }

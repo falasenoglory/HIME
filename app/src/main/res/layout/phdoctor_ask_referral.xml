@@ -15,7 +15,7 @@
 
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/text_enter_name"
+            android:hint="Enter specialization: "
             android:inputType="textPersonName"/>
     </android.support.design.widget.TextInputLayout>
 

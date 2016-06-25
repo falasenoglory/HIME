@@ -1,13 +1,11 @@
 package com.jimbofer.hime.fragments;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,7 @@ import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.ParseUtils.ParseTransaction;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.activities.TransactionDetails;
-import com.jimbofer.hime.adapter.TransactionAdapter;
+import com.jimbofer.hime.adapters.TransactionAdapter;
 import com.jimbofer.hime.constants.Constants;
 import com.jimbofer.hime.model.Doctor;
 import com.jimbofer.hime.model.HospitalAdmin;

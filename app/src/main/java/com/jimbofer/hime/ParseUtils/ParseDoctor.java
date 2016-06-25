@@ -32,7 +32,7 @@ public class ParseDoctor {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Doctor doct = new Doctor(obj.getString("objectId"), obj.getString("doctorID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("doctorContactNumber"), obj.getString("gender"), obj.getString("transactionPrice"));
+            Doctor doct = new Doctor(obj.getString("objectId"), obj.getString("username"), obj.getString("doctorID"), obj.getString("hospitalID"), obj.getString("Doctor"), obj.getString("doctorContactNumber"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("gender"), obj.getString("insuranceID"), obj.getString("transactionPrice"));
             parseDoctor.add(doct);
         }
         return parseDoctor;
@@ -51,10 +51,29 @@ public class ParseDoctor {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            doct = new Doctor(obj.getString("objectId"), obj.getString("doctorID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("doctorContactNumber"), obj.getString("gender"), obj.getString("transactionPrice"));
+            doct = new Doctor(obj.getString("objectId"), obj.getString("username"), obj.getString("doctorID"), obj.getString("hospitalID"), obj.getString("Doctor"), obj.getString("doctorContactNumber"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("gender"), obj.getString("insuranceID"), obj.getString("transactionPrice"));
 
         }
         return doct;
+    }
+
+    public static List<Doctor> getDoctorsInHospital(String hospitalId) {
+
+        List<ParseObject> list = new ArrayList<>();
+        List<Doctor> doctors = new ArrayList<>();
+
+        Doctor doct = null;
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Doctor");
+        query.whereEqualTo("hospitalID", hospitalId);
+        try {
+            list = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : list) {
+            doctors.add(new Doctor(obj.getString("objectId"), obj.getString("username"), obj.getString("doctorID"), obj.getString("hospitalID"), obj.getString("Doctor"), obj.getString("doctorContactNumber"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("gender"), obj.getString("insuranceID"), obj.getString("transactionPrice")));
+        }
+        return doctors;
     }
 
     public static int ListSize() {
@@ -68,25 +87,27 @@ public class ParseDoctor {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Doctor doct = new Doctor(obj.getString("objectId"), obj.getString("doctorID"), obj.getString("insuranceID"), obj.getString("hospitalID"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("doctorContactNumber"), obj.getString("gender"), obj.getString("transactionPrice"));
+            Doctor doct = new Doctor(obj.getString("objectId"), obj.getString("username"), obj.getString("doctorID"), obj.getString("hospitalID"), obj.getString("Doctor"), obj.getString("doctorContactNumber"), obj.getString("doctorFirstName"), obj.getString("doctorLastName"), obj.getString("doctorSpecialization"), obj.getString("gender"), obj.getString("insuranceID"), obj.getString("transactionPrice"));
             parseDoctor.add(doct);
         }
         return Integer.parseInt(parseDoctor.get(parseDoctor.size() - 1).getDoctorId());
 
     }
 
-    public void addDoctor(String hospID, String insID, String fname, String lname, String specialization, String contactNo, String gender, String transPrice) {
+    public void addDoctor(String objectID, String username, String doctorId, String hospitalId, String doctor, String contactNo, String firstname, String lastname, String specialization, String gender, String insuranceId, String transactionPrice) {
         int DoctorID = ListSize() + 1;
         ParseObject storyActivity = new ParseObject("Doctor");
-        storyActivity.put("doctorID", DoctorID);
-        storyActivity.put("hospitalID", hospID);
-        storyActivity.put("insuranceID", insID);
-        storyActivity.put("doctorFirstName", fname);
-        storyActivity.put("doctorLastName", lname);
-        storyActivity.put("doctorSpecialization", specialization);
+        storyActivity.put("username", username);
+        storyActivity.put("doctorID", doctorId);
+        storyActivity.put("hospitalID", hospitalId);
+        storyActivity.put("Doctor", doctor);
         storyActivity.put("doctorContactNumber", contactNo);
+        storyActivity.put("doctorFirstName", firstname);
+        storyActivity.put("doctorLastName", lastname);
+        storyActivity.put("doctorSpecialization", specialization);
         storyActivity.put("gender", gender);
-        storyActivity.put("transactionPrice", transPrice);
+        storyActivity.put("insuranceID", insuranceId);
+        storyActivity.put("transactionPrice", transactionPrice);
 
         storyActivity.saveInBackground(new SaveCallback() {
             public void done(ParseException e) {
@@ -107,7 +128,6 @@ public class ParseDoctor {
             @Override
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
-
                     for (ParseObject obj : list) {
 
                         try {
