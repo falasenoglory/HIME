@@ -18,6 +18,7 @@ import com.jimbofer.hime.ParseUtils.ParseDoctor;
 import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.constants.User;
+import com.jimbofer.hime.fragments.DialogBox;
 import com.jimbofer.hime.model.Doctor;
 import com.jimbofer.hime.model.HospitalAdmin;
 import com.parse.ParseException;
@@ -37,7 +38,6 @@ public class PatientToHospitalActivity extends AppCompatActivity {
     private static int transactionSize;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +50,38 @@ public class PatientToHospitalActivity extends AppCompatActivity {
 
     public void cardView1(View view) {
         User.doctorID = doctorID;
-        ParseAppointments.addAppointment("06-26-16", "8:00", User.doctorID, User.patientID);
-        Log.d("Hello", "Hello");
+        final DialogBox doctorDialog = new DialogBox();
+        doctorDialog.show(getFragmentManager(), "Fragment");
+        doctorDialog.setOnItemClickListener(new DialogBox.OnItemClickListener() {
+            @Override
+            public void onOkItemClickListener() {
+                ParseAppointments.addAppointment(doctorDialog.getDate(), "8:00", User.doctorID, User.patientID);
+                doctorDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelItemClickListener() {
+                doctorDialog.dismiss();
+            }
+        });
     }
 
     public void cardView2(View view) {
         User.doctorID = dentistID;
-        ParseAppointments.addAppointment("06-26-16", "8:00", User.doctorID, User.patientID);
-        Log.d("Hello2", "Hello2");
+        final DialogBox doctorDialog = new DialogBox();
+        doctorDialog.show(getFragmentManager(), "Fragment");
+        doctorDialog.setOnItemClickListener(new DialogBox.OnItemClickListener() {
+            @Override
+            public void onOkItemClickListener() {
+                ParseAppointments.addAppointment(doctorDialog.getDate(), "8:00", User.doctorID, User.patientID);
+                doctorDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelItemClickListener() {
+                doctorDialog.dismiss();
+            }
+        });
     }
 
     public void cardView3(View view) {
