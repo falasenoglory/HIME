@@ -13,6 +13,7 @@ import com.jimbofer.hime.constants.Constants;
 import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 
 
@@ -32,6 +33,7 @@ public class LoginActivity extends Activity {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "aj8ntnHqK73s2LxmkWnPa9yJdPazzVg2DZj9QQ6f", "CbKfkP6JoRu5UvoXUeQMWkdqA6GKSPpWm38KmSsd");
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
         et_username = (EditText) findViewById(R.id.AccountID);
         et_password = (EditText) findViewById(R.id.password);

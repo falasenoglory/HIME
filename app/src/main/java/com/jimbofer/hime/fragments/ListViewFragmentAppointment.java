@@ -82,9 +82,9 @@ public class ListViewFragmentAppointment extends Fragment implements AdapterView
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Appointments appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
+//            Appointments appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
 
-            Lappointment.add(appt);
+//            Lappointment.add(appt);
             Log.d("chan", "Status: " + obj.getString("Status"));
             Log.d("chan", "Status: " + obj.getString("Status"));
         }

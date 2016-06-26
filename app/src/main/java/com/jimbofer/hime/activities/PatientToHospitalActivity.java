@@ -13,9 +13,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.jimbofer.hime.ParseUtils.ParseAppointments;
 import com.jimbofer.hime.ParseUtils.ParseDoctor;
 import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.R;
+import com.jimbofer.hime.constants.User;
 import com.jimbofer.hime.model.Doctor;
 import com.jimbofer.hime.model.HospitalAdmin;
 import com.parse.ParseException;
@@ -29,8 +31,11 @@ import java.util.List;
 
 public class PatientToHospitalActivity extends AppCompatActivity {
 
-    public static String hospid;
-    public static String longi, lati;
+    private static String hospid;
+    private static String longi, lati;
+    private static String doctorID, dentistID;
+    private static int transactionSize;
+
 
 
     @Override
@@ -44,10 +49,14 @@ public class PatientToHospitalActivity extends AppCompatActivity {
     }
 
     public void cardView1(View view) {
+        User.doctorID = doctorID;
+        ParseAppointments.addAppointment("06-26-16", "8:00", User.doctorID, User.patientID);
         Log.d("Hello", "Hello");
     }
 
     public void cardView2(View view) {
+        User.doctorID = dentistID;
+        ParseAppointments.addAppointment("06-26-16", "8:00", User.doctorID, User.patientID);
         Log.d("Hello2", "Hello2");
     }
 
@@ -101,21 +110,28 @@ public class PatientToHospitalActivity extends AppCompatActivity {
 
         @Override
         protected List<Doctor> doInBackground(Void... params) {
+            transactionSize = ParseAppointments.ListSize();
             hospital = ParseHospitalAdmin.getCertainHospitalAdminDetails(hospid);
             return ParseDoctor.getDoctorsInHospital(hospid);
         }
 
         @Override
         protected void onPostExecute(List<Doctor> doctors) {
+            User.transactionSize = transactionSize;
+            String name;
             Doctor doctor = doctors.get(0);
-            mDoctorName.setText("Dr. " + doctor.getFirstname() + " " + doctor.getLastname());
+            doctorID = doctor.getDoctorId();
+            name = "Dr. " + doctor.getFirstname() + " " + doctor.getLastname();
+            mDoctorName.setText(name);
             mSpecialty.setText(doctor.getSpecialization());
             mDoctorNumber.setText(doctor.getContactNo());
-            if(doctors.size() == 2) {
+            if (doctors.size() == 2) {
                 doctor = doctors.get(1);
-                mDentistName.setText("Dr. " + doctor.getFirstname() + " " + doctor.getLastname());
+                name = "Dr. " + doctor.getFirstname() + " " + doctor.getLastname();
+                mDentistName.setText(name);
                 mDentistNumber.setText(doctor.getContactNo());
-            }else{
+                dentistID = doctor.getDoctorId();
+            } else {
                 mDentistName.setText("NO DENTIST");
                 mDentistNumber.setText("");
             }

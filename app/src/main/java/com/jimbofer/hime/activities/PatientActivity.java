@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.jimbofer.hime.ParseUtils.ParsePatient;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.constants.Constants;
+import com.jimbofer.hime.constants.User;
 import com.jimbofer.hime.fragments.HospitalFragment;
 import com.jimbofer.hime.fragments.ProfileFragment;
 import com.jimbofer.hime.fragments.TransactionFragment;
@@ -129,6 +130,13 @@ public class PatientActivity extends AppCompatActivity
             patient = taskPatient;
         Fragment fragment = new ProfileFragment();
         Bundle bundle = new Bundle();
+            User.username = username;
+            User.firstName = patient.getFirstName();
+            User.lastName = patient.getLastName();
+            User.patientID = patient.getPatientID();
+            User.middleInitial = patient.getMiddleInitial();
+            User.insuranceID = patient.getInsuranceID();
+
         bundle.putString(Constants.PARSE_FIRSTNAME_KEY, patient.getFirstName());
         bundle.putString(Constants.PARSE_LASTNAME_KEY, patient.getLastName());
         bundle.putString(Constants.PARSE_PATIENTID_KEY, patient.getPatientID());

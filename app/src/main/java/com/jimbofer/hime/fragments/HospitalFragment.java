@@ -17,6 +17,7 @@ import com.jimbofer.hime.ParseUtils.ParseHospitalAdmin;
 import com.jimbofer.hime.R;
 import com.jimbofer.hime.activities.PatientToHospitalActivity;
 import com.jimbofer.hime.adapters.HospitalFragmentAdapter;
+import com.jimbofer.hime.constants.User;
 import com.jimbofer.hime.model.Doctor;
 import com.jimbofer.hime.model.HospitalAdmin;
 
@@ -63,6 +64,7 @@ public class HospitalFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(context, PatientToHospitalActivity.class);
+                    User.hospitalID = hospitals.get(position).getHospitalId();
                     intent.putExtra("HospitalID", hospitals.get(position).getHospitalId());
                     context.startActivity(intent);
                 }

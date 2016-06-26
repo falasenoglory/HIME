@@ -67,7 +67,7 @@ public class AppointmentStatus extends AppCompatActivity {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            appt = new Appointments(obj.getString("AppointmentID"),obj.getString("AppointmentDate"),obj.getString("PatientID"),obj.getString("DoctorID"),obj.getString("AppointmentTime"),obj.getString("Status"));
+//            appt = new Appointments(obj.getString("AppointmentID"),obj.getString("AppointmentDate"),obj.getString("PatientID"),obj.getString("DoctorID"),obj.getString("AppointmentTime"),obj.getString("Status"));
             aydi = obj.getObjectId();
         }
 
@@ -95,16 +95,16 @@ public class AppointmentStatus extends AppCompatActivity {
            docid = appt.getAppointmentDoctorID();
         }
 
-        btnAccept.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                ParseAppointments.deleteAppointment(aydi);
-                ParseAppointments.addAppointment2(appID, date, time, "Accepted", patid, docid);
-                Intent backactivity = new Intent(AppointmentStatus.this,ViewAppointments.class);
-                backactivity.putExtra("username",username);
-                startActivity(backactivity);
-            }
-        });
+//        btnAccept.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v)
+//            {
+//                ParseAppointments.deleteAppointment(aydi);
+//                ParseAppointments.addAppointment2(appID, date, time, "Accepted", patid, docid);
+//                Intent backactivity = new Intent(AppointmentStatus.this,ViewAppointments.class);
+//                backactivity.putExtra("username",username);
+//                startActivity(backactivity);
+//            }
+//        });
         btnIgnore.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {

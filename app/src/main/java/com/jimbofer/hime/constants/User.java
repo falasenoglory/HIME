@@ -9,4 +9,10 @@ public final class User {
     public static String firstName;
     public static String lastName;
     public static String middleInitial;
+    public static String insuranceID;
+
+    public static String hospitalID;
+    public static String doctorID;
+
+    public static int transactionSize;
 }

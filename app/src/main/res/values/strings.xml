@@ -52,5 +52,6 @@
     <string name="patient_hospital_doctor">PHToDoctor</string>
     <string name="patient_hospital">PTHToHospital</string>
     <string name="title_activity_appointment_status">AppointmentStatus</string>
+    <string name="title_doctor">DoctorActivity</string>
 </resources>
 

@@ -10,14 +10,16 @@ public class Appointments {
     private String AppointmentDoctorID;
     private String AppointmentTime;
     private String Status;
+    private Boolean Answered;
 
-    public Appointments(String appointmentID, String appointmentDate, String appointmentPatientID, String appointmentDoctorID, String appointmentTime, String status) {
+    public Appointments(String appointmentDate, String appointmentID, String appointmentTime, String appointmentDoctorID, String appointmentPatientID, String status, Boolean Answered) {
         AppointmentID = appointmentID;
         AppointmentDate = appointmentDate;
         AppointmentPatientID = appointmentPatientID;
         AppointmentDoctorID = appointmentDoctorID;
         AppointmentTime = appointmentTime;
         Status = status;
+        this.Answered = Answered;
     }
 
     public String getAppointmentID() {

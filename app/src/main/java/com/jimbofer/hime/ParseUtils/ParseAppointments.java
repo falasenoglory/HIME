@@ -2,6 +2,7 @@ package com.jimbofer.hime.ParseUtils;
 
 import android.util.Log;
 
+import com.jimbofer.hime.constants.User;
 import com.jimbofer.hime.model.Appointments;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -30,7 +31,7 @@ public class ParseAppointments {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Appointments appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
+//            Appointments appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
             parseAppointment.add(appt);
         }
         return parseAppointment;
@@ -49,7 +50,7 @@ public class ParseAppointments {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
+//            appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
 
         }
         return appt;
@@ -59,6 +60,8 @@ public class ParseAppointments {
         List<ParseObject> list = new ArrayList<>();
         List<Appointments> parseAppointment = new ArrayList<>();
 
+        int counter = 0;
+
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Appointment");
         try {
             list = query.find();
@@ -66,44 +69,23 @@ public class ParseAppointments {
             e.printStackTrace();
         }
         for (ParseObject obj : list) {
-            Appointments appt = new Appointments(obj.getString("AppointmentID"), obj.getString("AppointmentDate"), obj.getString("PatientID"), obj.getString("DoctorID"), obj.getString("AppointmentTime"), obj.getString("Status"));
+            ++counter;
+            Appointments appt = new Appointments(obj.getString("AppointmentDate"), obj.getString("AppointmentID"), obj.getString("AppointmentTime"), obj.getString("DoctorID"), obj.getString("PatientID"), obj.getString("Status"), obj.getBoolean("Answered"));
             parseAppointment.add(appt);
         }
-        return Integer.parseInt(parseAppointment.get(parseAppointment.size() - 1).getAppointmentID());
+        return counter;
 
     }
 
-    public static void addAppointment(String appID, String appDate, String apptTime, String status, String patid, String docid) {
-        int apid = ListSize() + 1;
-        ParseObject storyActivity = new ParseObject("Appointment");
-        storyActivity.put("AppointmentID", apid);
-        storyActivity.put("AppointmentDate", appDate);
-        storyActivity.put("PatientID", patid);
-        storyActivity.put("DoctorID", docid);
-        storyActivity.put("Status", status);
-        storyActivity.put("AppointmentTime", apptTime);
 
-        storyActivity.saveInBackground(new SaveCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    // your object is successfully created.
-                } else {
-                    //error occurred
-                    Log.d("Error", "Nothing added , Exception " + e);
-                }
-            }
-        });
-    }
-
-    public static void addAppointment2(String appDate, String apptTime, String docid, String patid) {
-        int apid = ListSize() + 1;
+    public static void addAppointment(String appDate, String apptTime, String docid, String patid) {
         ParseObject storyActivity = new ParseObject("Appointment");
         storyActivity.put("AppointmentDate", appDate);
-        storyActivity.put("AppointmentID", ""+apid);
+        storyActivity.put("AppointmentID", " " + User.transactionSize + 1);
         storyActivity.put("AppointmentTime", apptTime);
         storyActivity.put("DoctorID", docid);
         storyActivity.put("PatientID", patid);
-        storyActivity.put("Status", false);
+        storyActivity.put("Status", "PENDING");
         storyActivity.put("Answered", false);
 
         try {
