@@ -56,6 +56,24 @@ public class ParseAppointments {
         return appt;
     }
 
+    public static List<Appointments> getDoctorPendingAppointments(String doctorID) {
+        List<ParseObject> parseObjects = new ArrayList<>();
+        List<Appointments> appointments = new ArrayList<>();
+
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Appointment");
+        query.whereEqualTo("DoctorID", doctorID);
+        query.whereEqualTo("Status", "PENDING");
+        try {
+            parseObjects = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (ParseObject obj : parseObjects) {
+            appointments.add(new Appointments(obj.getString("AppointmentDate"), obj.getString("AppointmentID"), obj.getString("AppointmentTime"), obj.getString("DoctorID"), obj.getString("PatientID"), obj.getString("Status"), obj.getBoolean("Answered")));
+        }
+        return appointments;
+    }
+
     public static int ListSize() {
         List<ParseObject> list = new ArrayList<>();
         List<Appointments> parseAppointment = new ArrayList<>();
@@ -81,7 +99,7 @@ public class ParseAppointments {
     public static void addAppointment(String appDate, String apptTime, String docid, String patid) {
         ParseObject storyActivity = new ParseObject("Appointment");
         storyActivity.put("AppointmentDate", appDate);
-        storyActivity.put("AppointmentID", " " + User.transactionSize + 1);
+        storyActivity.put("AppointmentID", " " + (User.transactionSize + 1));
         storyActivity.put("AppointmentTime", apptTime);
         storyActivity.put("DoctorID", docid);
         storyActivity.put("PatientID", patid);
